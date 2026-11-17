@@ -1,0 +1,349 @@
+@import "tailwindcss";
+@plugin "@tailwindcss/typography";
+
+/* 다크 모드: html[data-theme="dark"] (ThemeToggle이 시스템 설정을 따라 초기값을 정함) */
+@custom-variant dark (&:where([data-theme="dark"], [data-theme="dark"] *));
+
+/* =====================================================================
+   옥스포드 노트 디자인 토큰
+   - 책상(desk) 위에 놓인 노트 종이(paper). 화면의 90% 이상은 무채색이고,
+     색은 옥스포드 표지의 네이비(accent) 하나와 노트 여백선의 빨강(margin) 표시뿐입니다.
+   - 괘선(rule)은 32px 간격. 본문 줄 높이도 32px이라 글자가 줄 위에 앉습니다.
+   - 모든 글자/배경 조합은 명암비 4.5:1 이상, 본문은 7:1 이상.
+   - 보라색 계열 금지 (네이비는 OKLCH 255°의 순수한 파랑).
+   ===================================================================== */
+:root {
+  --desk: #efece4;
+  --paper: #fffef9;
+  --paper-2: #f6f3ea;          /* 칩·보조 면 */
+  --ink: #2a2722;              /* 따뜻한 검정 (본문 14.7:1) */
+  --muted: #5c564c;            /* 날짜·메타 (7.0:1) */
+  --ink-2: #47423a;            /* 설명 글 (9.6:1) */
+  --line: rgb(42 39 34 / .14); /* 종이 테두리·구분선 (잉크의 14%) */
+  --line-strong: rgb(42 39 34 / .28);
+  --accent: #24548f;           /* 옥스포드 네이비: 링크·선택·포커스 (7.6:1) */
+  --on-accent: #ffffff;
+  --rule: #e1ebf5;             /* 하늘색 괘선 (글자를 방해하지 않게 옅게) */
+  --margin: #eaa49d;           /* 빨간 여백선 */
+  --sticky: #fff3bf;           /* 포스트잇 */
+  --sticky-ink: #2a2722;
+  --hole: var(--desk);         /* 펀치 구멍 */
+  --shadow-hover: 0 10px 24px rgb(42 39 34 / .10);
+  --code-bg: #1d2330;
+  --code-ink: #e6e9ef;
+  --code-line: #2d3546;
+  --code-muted: #8f99ab;
+  --avatar: linear-gradient(180deg, #b9ae9b, #8d8372);
+  --rule-y: 25px;              /* 32px 줄 안에서 괘선 위치 (글자 기준선 바로 아래) */
+  color-scheme: light;
+}
+:root[data-theme="dark"] {
+  --desk: #11141a;
+  --paper: #1b2029;
+  --paper-2: #242a35;
+  --ink: #ece8df;
+  --muted: #b3ada2;
+  --ink-2: #d2cdc2;
+  --line: rgb(236 232 223 / .12);
+  --line-strong: rgb(236 232 223 / .26);
+  --accent: #7fb0f0;
+  --on-accent: #0f1520;
+  --rule: rgb(127 176 240 / .09);
+  --margin: rgb(224 138 130 / .45);
+  --sticky: #3a3420;
+  --sticky-ink: #f3ecd6;
+  --shadow-hover: 0 0 0 1px rgb(236 232 223 / .22);
+  --code-bg: #12161e;
+  --code-ink: #e6e9ef;
+  --code-line: #262d3a;
+  --code-muted: #8790a1;
+  --avatar: linear-gradient(180deg, #6e6556, #4c4539);
+  color-scheme: dark;
+}
+
+@theme inline {
+  --color-desk: var(--desk);
+  --color-paper: var(--paper);
+  --color-paper-2: var(--paper-2);
+  --color-ink: var(--ink);
+  --color-muted: var(--muted);
+  --color-ink-2: var(--ink-2);
+  --color-line: var(--line);
+  --color-line-strong: var(--line-strong);
+  --color-accent: var(--accent);
+  --color-on-accent: var(--on-accent);
+  --color-rule: var(--rule);
+  --color-margin: var(--margin);
+  --color-code-bg: var(--code-bg);
+
+  /* 본문: Pretendard (긴 글 가독성) / 제목: 밍기적체 손글씨 / 코드: JetBrains Mono */
+  --font-sans: "Pretendard Variable", Pretendard, -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Malgun Gothic", sans-serif;
+  --font-hand: var(--font-mingijuk), "Pretendard Variable", Pretendard, "Apple SD Gothic Neo", sans-serif;
+  --font-mono: var(--font-jetbrains), "D2Coding", ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+
+  /* 반경 체계 (HIG의 둥근 모서리): 카드 16px · 글 종이 20px · 작은 요소 10px · 캡슐 999px */
+  --radius-card: 16px;
+  --radius-paper: 20px;
+  --radius-sm: 10px;
+
+  /* 움직임: 하나의 UI 이징 */
+  --ease-ui: cubic-bezier(.2, .8, .2, 1);
+}
+
+/* 텍스트 스타일 — Apple HIG 텍스트 스타일 크기 기준
+   footnote 13 / subhead 15 / callout 16 / body 17 / title3 20 / title1 34 / largeTitle 44
+   큰 제목(title1·largeTitle)만 밍기적체 손글씨, 나머지는 Pretendard */
+@utility text-footnote { font-size: 13px; line-height: 18px; }
+@utility text-caption { font-size: 13px; line-height: 18px; }
+@utility text-subhead { font-size: 15px; line-height: 22px; }
+@utility text-callout { font-size: 16px; line-height: 24px; }
+@utility text-body { font-size: 17px; line-height: 26px; }
+@utility text-title3 { font-size: 20px; line-height: 28px; font-weight: 600; letter-spacing: -.015em; }
+@utility text-title1 { font-family: var(--font-hand); font-size: 36px; line-height: 44px; letter-spacing: 0; }
+@utility text-large { font-family: var(--font-hand); font-size: 48px; line-height: 56px; letter-spacing: 0; }
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; scroll-padding-top: 24px; }
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after { transition-duration: 0s !important; animation-duration: 0s !important; }
+}
+body {
+  margin: 0;
+  background: var(--desk);
+  color: var(--ink);
+  font-family: var(--font-sans);
+  font-size: 17px;
+  line-height: 32px;
+  letter-spacing: -.01em;
+  font-synthesis: none;          /* 손글씨 제목에 가짜 굵게가 생기지 않게 */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  word-break: keep-all;
+  overflow-wrap: anywhere;
+}
+::selection { background: color-mix(in srgb, var(--accent) 22%, transparent); }
+/* 포커스: 액션 색 2px 링, 2px 띄움, 전환 없음 */
+:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; border-radius: 8px; }
+/* 제목 기본값은 base 레이어에 두어, text-title3 같은 유틸리티의 굵기가 이기도록 합니다 */
+@layer base { h1, h2, h3, h4 { font-weight: 400; text-wrap-style: balance; } }
+.font-hand { font-family: var(--font-hand); letter-spacing: 0; }
+
+/* =====================================================================
+   공통 부품 (한 가지 체계)
+   ===================================================================== */
+@layer components {
+  /* 종이: 글 한 장 */
+  .paper {
+    background: var(--paper);
+    border: 1px solid var(--line);
+    border-radius: var(--radius-paper);
+    box-shadow: 0 1px 2px rgb(42 39 34 / .04);
+  }
+  /* 카드: 목록·이전/다음 글 (한 가지 카드 모양) */
+  .card {
+    background: var(--paper);
+    border: 1px solid var(--line);
+    border-radius: var(--radius-card);
+    box-shadow: 0 1px 2px rgb(42 39 34 / .04);
+  }
+  /* 빨간 여백선: 종이 왼쪽 안쪽의 세로선 */
+  .margin-line { position: relative; }
+  .margin-line::before {
+    content: ""; position: absolute; top: 0; bottom: 0; left: var(--margin-x, 28px);
+    width: 1px; background: var(--margin); pointer-events: none;
+  }
+  /* 괘선 종이: 32px마다 하늘색 줄 */
+  .ruled {
+    background-image: linear-gradient(to bottom, transparent calc(var(--rule-y) - 1px), var(--rule) calc(var(--rule-y) - 1px), var(--rule) var(--rule-y), transparent var(--rule-y));
+    background-size: 100% 32px;
+  }
+  /* 링크가 걸린 카드: 2px 떠오르고 테두리가 한 단계 진해지며 옅은 그림자 */
+  .lift {
+    transition: transform 120ms var(--ease-ui), border-color 120ms var(--ease-ui), box-shadow 120ms var(--ease-ui);
+  }
+  .lift:hover { transition-duration: 180ms; border-color: var(--line-strong); box-shadow: var(--shadow-hover); }
+  @media (hover: hover) and (prefers-reduced-motion: no-preference) {
+    .lift:hover { transform: translateY(-2px); }
+  }
+  /* 사진 확대: 액자 안에서 1.03 */
+  .zoom { transition: transform 400ms var(--ease-ui); }
+  .group:hover .zoom { transition-duration: 600ms; }
+  @media (prefers-reduced-motion: no-preference) {
+    .group:hover .zoom { transform: scale(1.03); }
+  }
+  /* 칩: 카테고리·태그 */
+  .chip {
+    display: inline-flex; align-items: center; flex: none;
+    padding: 0 10px; border-radius: 999px;
+    border: 1px solid var(--line); background: var(--paper-2);
+    font-size: 14px; line-height: 26px; color: var(--muted);
+  }
+  .chip--accent { color: var(--accent); background: var(--paper); border-color: color-mix(in srgb, var(--accent) 40%, transparent); }
+  /* 링크 밑줄: 옅은 1px 선 위에 진한 선이 왼쪽에서 오른쪽으로 그려짐 */
+  .link-draw {
+    color: var(--accent); text-decoration: none;
+    background:
+      linear-gradient(currentColor, currentColor) left bottom / 0 1px no-repeat,
+      linear-gradient(color-mix(in srgb, currentColor 35%, transparent), color-mix(in srgb, currentColor 35%, transparent)) left bottom / 100% 1px no-repeat;
+    transition: background-size 120ms var(--ease-ui);
+  }
+  .link-draw:hover { background-size: 100% 1px, 100% 1px; transition-duration: 150ms; }
+  /* 아이콘 버튼 (메뉴·테마): 44px, 누르면 살짝 가라앉음 */
+  .icon-btn {
+    display: grid; place-items: center; width: 44px; height: 44px; border-radius: 999px;
+    color: var(--muted); transition: background-color 120ms var(--ease-ui), color 120ms var(--ease-ui), transform 90ms var(--ease-ui);
+  }
+  .icon-btn:hover { background: var(--paper-2); color: var(--ink); transition-duration: 150ms; }
+  .icon-btn:active { transform: translateY(1px) scale(.985); }
+}
+
+/* 사이드바 오른쪽 가장자리의 펀치 구멍 */
+/* .punched 요소는 이미 fixed/sticky로 위치가 잡혀 있어 position을 따로 주지 않습니다 */
+.punched::after {
+  content: ""; position: absolute; top: 24px; bottom: 24px; right: 12px; width: 14px; pointer-events: none;
+  background: radial-gradient(circle at 7px 7px, var(--hole) 6px, var(--line-strong) 6px 7px, transparent 7.5px) 0 0 / 14px 56px repeat-y;
+}
+
+/* =====================================================================
+   본문 (prose) — 괘선 위에 쓰는 노트
+   ===================================================================== */
+.prose {
+  --tw-prose-body: var(--ink);
+  --tw-prose-headings: var(--ink);
+  --tw-prose-lead: var(--muted);
+  --tw-prose-links: var(--accent);
+  --tw-prose-bold: var(--ink);
+  --tw-prose-counters: var(--muted);
+  --tw-prose-bullets: var(--accent);
+  --tw-prose-hr: var(--line);
+  --tw-prose-quotes: var(--sticky-ink);
+  --tw-prose-captions: var(--muted);
+  --tw-prose-code: var(--ink);
+  --tw-prose-th-borders: var(--line);
+  --tw-prose-td-borders: var(--line);
+  font-size: 17px;
+  line-height: 32px;
+  max-width: 42em;
+}
+/* 글이 있는 블록은 괘선 배경. 여백 대신 아래 패딩 32px(빈 줄 한 칸)을 두어 줄이 이어집니다. */
+.prose :where(p, ul, ol, h2, h3, h4) {
+  margin: 0; padding-bottom: 32px;
+  background-image: linear-gradient(to bottom, transparent calc(var(--rule-y) - 1px), var(--rule) calc(var(--rule-y) - 1px), var(--rule) var(--rule-y), transparent var(--rule-y));
+  background-size: 100% 32px;
+}
+.prose :where(ul, ol) { padding-left: 1.4em; }
+.prose :where(li) { margin: 0; padding: 0; }
+.prose :where(li > p) { padding-bottom: 0; background: none; }
+.prose :where(li)::marker { color: var(--accent); }
+.prose :where(strong, b) { font-weight: 700; }
+.prose :where(h2) { font-family: var(--font-hand); letter-spacing: 0; font-size: 32px; line-height: 32px; padding-top: 32px; color: var(--accent); }
+.prose :where(h2):first-child { padding-top: 0; }
+.prose :where(h3) { font-size: 20px; line-height: 32px; font-weight: 700; letter-spacing: -.015em; }
+.prose :where(h4) { font-size: 17px; line-height: 32px; font-weight: 700; color: var(--accent); }
+.prose :where(h2, h3, h4) { scroll-margin-top: 24px; }
+.prose .heading-anchor { margin-left: 10px; color: var(--muted); text-decoration: none; opacity: 0; background: none; }
+.prose :where(h2, h3, h4):hover .heading-anchor { opacity: 1; }
+.prose :where(hr) { margin: 32px 0; border-color: var(--line); }
+
+/* 본문 링크: 그려지는 밑줄 */
+.prose :where(a:not(.heading-anchor)) {
+  font-weight: 400; color: var(--accent); text-decoration: none;
+  background:
+    linear-gradient(currentColor, currentColor) left 90% / 0 1px no-repeat,
+    linear-gradient(color-mix(in srgb, currentColor 35%, transparent), color-mix(in srgb, currentColor 35%, transparent)) left 90% / 100% 1px no-repeat;
+  transition: background-size 120ms var(--ease-ui);
+}
+.prose :where(a:not(.heading-anchor)):hover { background-size: 100% 1px, 100% 1px; transition-duration: 150ms; }
+
+/* 인라인 코드 */
+.prose :not(pre) > code {
+  font-family: var(--font-mono);
+  font-size: 14.5px;
+  font-weight: 400;
+  color: var(--accent);
+  background: var(--paper-2);
+  border: 1px solid var(--line);
+  padding: 1px 6px;
+  border-radius: 4px;
+}
+.prose :not(pre) > code::before, .prose :not(pre) > code::after { content: none; }
+
+/* 인용문 → 포스트잇 */
+.prose blockquote {
+  font-style: normal; font-weight: 400;
+  margin: 0 0 32px; padding: 16px 20px;
+  border: 0; border-radius: 12px;
+  background: var(--sticky); color: var(--sticky-ink);
+  box-shadow: 0 1px 0 rgb(42 39 34 / .08), 0 6px 14px rgb(42 39 34 / .06);
+}
+.prose blockquote :where(p) { padding: 0; background: none; }
+.prose blockquote :where(p + p) { margin-top: 8px; }
+.prose blockquote :where(strong) { color: inherit; font-weight: 700; }
+.prose blockquote p::before, .prose blockquote p::after { content: none; }
+
+/* 표: 노트의 칸 */
+.prose table {
+  display: block; overflow-x: auto; margin: 0 0 32px;
+  border: 1px solid var(--line); border-radius: var(--radius-sm);
+  border-collapse: separate; border-spacing: 0;
+  font-size: 16px; line-height: 26px;
+}
+.prose thead { background: var(--paper-2); }
+.prose thead th { color: var(--muted); font-size: 14px; line-height: 22px; font-weight: 600; padding: 10px 16px; border-bottom: 2px solid var(--accent); }
+.prose tbody td { padding: 10px 16px; border-top: 1px solid var(--line); }
+.prose :is(td, th) + :is(td, th) { border-left: 1px solid var(--line); }
+.prose thead, .prose tbody tr { border: 0; }
+
+/* =====================================================================
+   코드 블록 (rehype-pretty-code) — 노트에 붙인 출력물
+   ===================================================================== */
+.prose figure[data-rehype-pretty-code-figure] {
+  position: relative;
+  margin: 0 0 32px;
+  border-radius: 12px;
+  overflow: hidden;
+  background: var(--code-bg);
+}
+.prose [data-rehype-pretty-code-title] {
+  display: flex; align-items: center; gap: 10px;
+  min-height: 44px; padding: 8px 16px;
+  font-family: var(--font-mono); font-size: 13px; line-height: 18px;
+  color: var(--code-muted);
+  border-bottom: 1px solid var(--code-line);
+}
+.prose [data-rehype-pretty-code-title]::before {
+  content: ""; width: 3px; height: 16px; border-radius: 2px; background: var(--margin); flex: none;
+}
+.prose figure[data-rehype-pretty-code-figure] pre {
+  margin: 0; padding: 16px 0; background: transparent; border-radius: 0; overflow-x: auto;
+  font-family: var(--font-mono); font-size: 14px; line-height: 24px; color: var(--code-ink); tab-size: 4;
+}
+.prose pre code { display: grid; font-family: inherit; font-size: inherit; font-weight: 400; font-variant-ligatures: none; }
+.prose pre [data-line] { padding: 0 16px; border-left: 3px solid transparent; }
+.prose pre [data-highlighted-line] { background: rgb(127 176 240 / .14); border-left-color: #7fb0f0; }
+.prose pre [data-highlighted-chars] { background: rgb(127 176 240 / .26); border-radius: 3px; padding: 0 2px; }
+.prose pre code[data-line-numbers] { counter-reset: line; }
+.prose pre code[data-line-numbers] > [data-line]::before {
+  counter-increment: line; content: counter(line); display: inline-block; width: 24px; margin-right: 16px; text-align: right; color: var(--code-muted);
+}
+
+/* 복사 버튼 (components/CodeCopy.tsx가 붙임) */
+.copy-btn {
+  position: absolute; top: 4px; right: 6px; min-height: 36px; padding: 0 12px;
+  font-family: var(--font-sans); font-size: 14px; line-height: 36px; color: var(--code-ink);
+  background: rgb(255 255 255 / .08); border: 1px solid rgb(255 255 255 / .12); border-radius: 999px; cursor: pointer;
+  opacity: 0; transition: opacity 120ms var(--ease-ui), background-color 120ms var(--ease-ui), transform 90ms var(--ease-ui);
+}
+figure:hover .copy-btn, .copy-btn:focus-visible { opacity: 1; }
+.copy-btn:hover { background: rgb(255 255 255 / .16); }
+.copy-btn:active { transform: translateY(1px) scale(.985); }
+@media (hover: none) { .copy-btn { opacity: 1; } }
+
+/* =====================================================================
+   본문 이미지 — 노트에 붙인 사진
+   ===================================================================== */
+.prose img { display: block; max-width: 100%; height: auto; margin: 0 auto 32px; border-radius: 12px; border: 1px solid var(--line); }
+.prose .post-figure { margin: 0 0 32px; }
+.prose .post-figure img { margin: 0 auto; }
+.prose .post-figure figcaption { margin-top: 8px; text-align: center; font-size: 14px; line-height: 22px; color: var(--muted); }
