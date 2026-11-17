@@ -10,6 +10,8 @@ tags: [nginx, domain]
 
 ![nginx-multi1](https://www.dropbox.com/scl/fi/v5agb70f3o1ozav8jileo/nginx-mulit1.png?rlkey=ilq71fhvpzmzvygrutlj2wjq5&st=pejzkg3q&dl=1)
 
+<br>
+
 ## 2\. Nginx 설정 파일 수정
 
 ```nginx title="/ect/nginx/conf.g/default.conf"
@@ -41,9 +43,13 @@ sudo nginx -t
 sudo nginx -s reload
 ```
 
+<br>
+
 ## nginx-dy.p-e.kr로 접속 시 react 응답
 
 ![nginx-multi2](https://www.dropbox.com/scl/fi/s9v9caaruodptflz9i3zu/nginx-multi2.png?rlkey=wgq8h1dcojbbnb9f7chdjn1nd&st=ly78xdqx&dl=1)
+
+<br>
 
 ## admin.nginx-dy.p-e.kr로 접속 시 next 응답
 

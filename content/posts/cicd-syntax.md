@@ -8,6 +8,8 @@ tags: [ci/cd, github-actions]
 
 ## 1\. 프로젝트에 .github/workflows 폴더 생성
 
+<br>
+
 ## 2\. 배포 파일 생성
 
 ```yml title=".github/workflows/depoly.yml"
@@ -54,7 +56,11 @@ jobs:
           echo ${{ secrets.HOBBY }}
 ```
 
+<br>
+
 ## 3\. 작업 후 코드 Commit & Push
+
+<br>
 
 ## 4\. Github 레포지토리에 생성된 Actions 확인
 

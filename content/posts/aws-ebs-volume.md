@@ -17,9 +17,13 @@ tags: [aws, ebs]
 - /var -> 로그, Docker 데이터, 캐시
 - /home -> 사용자 데이터(Github actions runner)
 
+<br>
+
 ## EBS 볼륨 수정
 
 EC2 인스턴스 -> EBS -> 볼륨 선택 후 작업 -> 볼륨의 용량을 원하는 용량으로 설정
+
+<br>
 
 ## 설정 후 다시 용량 확인
 
@@ -32,6 +36,8 @@ AWS의 EBS 크기만 늘어난 상태이고, Ubuntu 파일 시스템에 확장�
 ![ebs4](https://www.dropbox.com/scl/fi/7410gj2jycpcrva36422n/ebs-volume4.png?rlkey=7vq6n5uozfzf61idxb2f8dm0r&st=sainnbdp&dl=1)
 
 nvme0n1애 확장된 20GB의 볼륨이 확인된다.
+
+<br>
 
 ## Ubuntu에 볼륨 적용
 

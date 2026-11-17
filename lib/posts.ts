@@ -9,7 +9,9 @@ const POSTS_DIR = path.join(process.cwd(), "content", "posts");
 export type PostMeta = {
   slug: string;
   title: string;
-  date: string; // YYYY-MM-DD
+  date: string; // YYYY-MM-DD (화면에 보이는 날짜)
+  dateTime: string; // YYYY-MM-DDTHH:mm (정렬용. 시간을 안 적으면 00:00)
+  order: number; // 같은 날짜·시간일 때 우선순위. 클수록 위 (기본 0)
   category: string;
   categorySlug: string;
   description: string;
@@ -42,14 +44,27 @@ function thumbnailOf(data: Record<string, unknown>, content: string) {
   return src ? withBase(src) : null;
 }
 
+// front matter의 date → { 날짜, 정렬용 날짜·시간 }
+// "2026-11-17", "2026-11-17 14:30", "2026-11-17T14:30:00" 모두 됩니다. (시간은 적은 그대로 비교)
+function parseDate(raw: unknown) {
+  // YAML이 날짜로 읽은 값(Date)은 적은 시각 그대로 UTC로 들어옵니다
+  const text = raw instanceof Date ? raw.toISOString() : String(raw ?? "").trim();
+  const m = text.match(/^(\d{4}-\d{2}-\d{2})(?:[ T](\d{1,2}):(\d{2}))?/);
+  if (!m) return { date: text, dateTime: text };
+  const [, day, hh = "0", mm = "00"] = m;
+  return { date: day, dateTime: `${day}T${hh.padStart(2, "0")}:${mm}` };
+}
+
 function toMeta(slug: string, data: Record<string, unknown>, content: string): PostMeta {
   const category = String(data.category ?? "미분류");
-  const date =
-    data.date instanceof Date ? data.date.toISOString().slice(0, 10) : String(data.date ?? "");
+  const { date, dateTime } = parseDate(data.date);
+  const order = Number(data.order ?? 0);
   return {
     slug,
     title: String(data.title ?? slug),
     date,
+    dateTime,
+    order: Number.isFinite(order) ? order : 0,
     category,
     categorySlug: toCategorySlug(category),
     description: String(data.description ?? ""),
@@ -66,6 +81,14 @@ function slugs() {
     .map((f) => f.replace(/\.md$/, ""));
 }
 
+// 글 순서: ① 날짜·시간이 늦은 글 → ② order가 큰 글 → ③ 제목 가나다순
+// (목록, 최신 글, 이전/다음 글이 모두 이 순서를 따릅니다)
+function comparePosts(a: PostMeta, b: PostMeta) {
+  if (a.dateTime !== b.dateTime) return a.dateTime < b.dateTime ? 1 : -1;
+  if (a.order !== b.order) return b.order - a.order;
+  return a.title.localeCompare(b.title, "ko");
+}
+
 export function getAllPosts(): PostMeta[] {
   return slugs()
     .map((slug) => {
@@ -74,7 +97,7 @@ export function getAllPosts(): PostMeta[] {
       return toMeta(slug, data, content);
     })
     .filter((p): p is PostMeta => p !== null)
-    .sort((a, b) => (a.date < b.date ? 1 : -1));
+    .sort(comparePosts);
 }
 
 // 정적 내보내기(output: export)는 동적 경로마다 페이지가 최소 하나 필요합니다.

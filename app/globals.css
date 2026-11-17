@@ -234,6 +234,8 @@ body {
   background-image: linear-gradient(to bottom, transparent calc(var(--rule-y) - 1px), var(--rule) calc(var(--rule-y) - 1px), var(--rule) var(--rule-y), transparent var(--rule-y));
   background-size: 100% var(--lh);
 }
+/* 단독 <br>이 바뀐 빈 줄: 괘선 한 줄 높이만 차지 (lib/markdown.ts의 rehypeBlankLines) */
+.prose p.blank-line { height: var(--lh); padding-bottom: 0; }
 .prose :where(ul, ol) { padding-left: 1.4em; }
 .prose :where(li) { margin: 0; padding: 0; }
 .prose :where(li > p) { padding-bottom: 0; background: none; }
@@ -254,7 +256,8 @@ body {
 .prose :where(h2):first-child { padding-top: 0; }
 /* ### : 손글씨, 본문과 같은 검정 */
 .prose :where(h3) { font-family: var(--font-hand); letter-spacing: 0; font-size: 26px; line-height: var(--lh); color: var(--ink); }
-.prose :where(h4) { font-size: 17px; line-height: var(--lh); font-weight: 700; color: var(--accent); }
+/* #### : 손글씨 네이비, ###보다 작게 */
+.prose :where(h4) { font-family: var(--font-hand); letter-spacing: 0; font-size: 21px; line-height: var(--lh); font-weight: 400; color: var(--accent); }
 .prose :where(h1, h2, h3, h4) { scroll-margin-top: 24px; }
 .prose .heading-anchor { margin-left: 10px; color: var(--muted); text-decoration: none; opacity: 0; background: none; }
 .prose :where(h1, h2, h3, h4):hover .heading-anchor { opacity: 1; }
@@ -314,9 +317,10 @@ body {
 .prose thead th {
   color: var(--muted); font-size: 14px; line-height: 22px; font-weight: 600;
   padding: 10px 16px; border-bottom: 2px solid var(--accent);
-  text-align: left; vertical-align: middle;
+  vertical-align: middle;
   white-space: nowrap;             /* "필수" 같은 짧은 머리글이 한 글자씩 끊기지 않게 */
 }
+.prose thead th { text-align: left; }
 .prose tbody td { padding: 10px 16px; border-top: 1px solid var(--line); vertical-align: top; }
 .prose tbody tr:first-child td { border-top: 0; }
 .prose :is(td, th) + :is(td, th) { border-left: 1px solid var(--line); }
@@ -385,7 +389,7 @@ figure:hover .copy-btn, .copy-btn:focus-visible { opacity: 1; }
   .prose :where(h1) { font-size: 30px; -webkit-text-stroke-width: .7px; }
   .prose :where(h2) { font-size: 26px; -webkit-text-stroke-width: .5px; }
   .prose :where(h3) { font-size: 21px; }
-  .prose :where(h4) { font-size: 15px; }
+  .prose :where(h4) { font-size: 17px; }
   .prose :not(pre) > code { font-size: 13px; padding: 0 4px; }
 
   /* 포스트잇 상자: 안쪽 여백을 줄여 글 폭 확보 */

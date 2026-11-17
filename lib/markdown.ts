@@ -49,6 +49,27 @@ function rehypeTableWrap() {
   };
 }
 
+// 줄에 <br>만 단독으로 쓴 경우(빈 줄 띄우기용)는 괘선이 그려진 빈 줄로 바꿉니다.
+// <br> 하나 = 괘선 한 줄. 문장 중간의 <br>(줄바꿈)은 그대로 둡니다.
+const STANDALONE_BR = /^\s*(?:<br\s*\/?>\s*)+$/i;
+function rehypeBlankLines() {
+  return (tree: Root) => {
+    visit(tree, "raw", (node: { type: "raw"; value: string }, index, parent) => {
+      if (!parent || index === undefined || !STANDALONE_BR.test(node.value)) return;
+      if (parent.type === "element" && ["p", "li", "h1", "h2", "h3", "h4", "td", "th"].includes(parent.tagName)) return;
+      const count = (node.value.match(/<br/gi) ?? []).length;
+      const blanks: Element[] = Array.from({ length: count }, () => ({
+        type: "element",
+        tagName: "p",
+        properties: { className: ["blank-line"], ariaHidden: "true" },
+        children: [],
+      }));
+      parent.children.splice(index, 1, ...blanks);
+      return index + blanks.length;
+    });
+  };
+}
+
 const prettyCode: Options = {
   // 디자인처럼 코드 블록은 라이트/다크 모두 어두운 배경을 씁니다.
   theme: "one-dark-pro",
@@ -66,6 +87,7 @@ const processor = unified()
   .use(rehypeSlug)
   .use(rehypeToc)
   .use(rehypeTableWrap)
+  .use(rehypeBlankLines)
   .use(rehypeAutolinkHeadings, {
     behavior: "append",
     properties: { className: ["heading-anchor"], ariaHidden: "true", tabIndex: -1 },

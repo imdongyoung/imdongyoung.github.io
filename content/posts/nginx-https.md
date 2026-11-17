@@ -13,6 +13,8 @@ sudo snap install --classic certbot
 sudo ln -s /snap/bin/certbot /usr/bin/certbot
 ```
 
+<br>
+
 ## HTTPS 인증서 발급 받기
 
 ```bash
@@ -21,9 +23,13 @@ sudo certbot --nginx -d <도메인 주소>
 # nginx 설정 파일의 server 블록에 해당 도메인이 없으면 에러
 ```
 
+<br>
+
 ### 인증서를 발급 받으면 HTTPS로 접속할 수 있음
 
 ![nginx-https-image](https://www.dropbox.com/scl/fi/sxlrhcznsubyqhup15dzz/nginx-https1.png?rlkey=o5tfemdcxvue90d54u6gxtl5x&st=q9oghfvo&dl=1)
+
+<br>
 
 ### Certbot이 작성한 Nginx 설정 파일 코드
 
@@ -99,6 +105,8 @@ server {
 include nginx-dy.p-e.kr.conf;
 include admin.nginx-dy.p-e.kr.conf;
 ```
+
+<br>
 
 ## Certbot으로 발급 받은 인증서 확인 명령어
 

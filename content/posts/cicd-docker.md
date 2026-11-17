@@ -12,6 +12,8 @@ tags: [ci/cd, github-actions, docker]
 
 도커 이미지들을 저장하는 AWS 서비스
 
+<br>
+
 ## 장점
 
 - Docker 기반으로 서비스를 운영할 떄, 가장 간단하게 구성할 수 있는 구조
@@ -24,24 +26,24 @@ tags: [ci/cd, github-actions, docker]
 
 ## 구축 과정
 
-### 1. EC2 서버에 docker 설치
+#### 1. EC2 서버에 docker 설치
 
-### 2. AWS IAM 사용자에 AmazonEC2ContainerRegistryFullAccess 권한 추가
+#### 2. AWS IAM 사용자에 AmazonEC2ContainerRegistryFullAccess 권한 추가
 
-### 3. EC2에 생성한 IAM 권한 부여
+#### 3. EC2에 생성한 IAM 권한 부여
 
-### 4. AWS ECR 레포지토리 생성
+#### 4. AWS ECR 레포지토리 생성
 
-### 5. Dockerfile, .dockerignore 작성
+#### 5. Dockerfile, .dockerignore 작성
 
-### 6. Private ECR에 접근할 수 있도록 EC2에 amazon-ecr-credential-halper 설치
+#### 6. Private ECR에 접근할 수 있도록 EC2에 amazon-ecr-credential-halper 설치
 
 ```bash
 sudo apt update
 sudo apt install amazon-ecr-credential-helper
 ```
 
-### 7. workflow 파일 작성
+#### 7. workflow 파일 작성
 
 > **수행 과정**
 >

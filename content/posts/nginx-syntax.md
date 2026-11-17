@@ -10,6 +10,8 @@ tags: [nginx]
 
 Nginx의 기본적인 설정 파일
 
+<br>
+
 ## Nginx 문법
 
 ```nginx title="nginx.conf"
@@ -42,6 +44,8 @@ server {
 }
 ```
 
+<br>
+
 ## Nginx 명령어
 
 ```bash
@@ -51,6 +55,8 @@ sudo nginx -t
 # nginx 설정 파일 변경 반영
 sudo nginx -s reload
 ```
+
+<br>
 
 ## Nginx 에러 디버깅 방법
 

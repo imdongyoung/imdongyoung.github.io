@@ -1,16 +1,20 @@
 ---
-title: 영속성 컨텍스트
+title: Spring - 영속성 컨텍스트
 date: 2026-11-17
 category: Spring
-description: 영속성 컨텍스트가 무엇이고, EntityManager와 JpaRepository가 어떻게 이어지는지 정리했습니다.
+description: 스프링의 영속성 컨텍스트가 무엇이고, EntityManager와 JpaRepository가 어떻게 이어지는지 정리했습니다.
 tags: [spring, jpa]
 ---
 
 ## 영속성 컨텍스트란?
 
-> 영속성 컨텍스트(Persistence Context)는 엔티티를 논리하는 논리적 공간이다. 저장은 DB가 하고, 영속성 컨텍스트는 EntityManager가 살아 있는 동안(보통 트랜잭션 하나) 엔티티의 상태를 추적한다.
+영속성 컨텍스트(Persistence Context)는 엔티티를 논리하는 논리적 공간이다. 저장은 DB가 하고, 영속성 컨텍스트는 EntityManager가 살아 있는 동안(보통 트랜잭션 하나) 엔티티의 상태를 추적한다.
 
 ![영속성 컨텍스트 구조](https://www.dropbox.com/scl/fi/3fiwtp8o2747xwydzfw8k/persistence-context.png?rlkey=2m3j4ozxxi8g047fkq22s4fdr&st=45p6hwxi&dl=1)
+
+<br>
+
+## JDBC와 영속성 컨텍스트의 차이점
 
 | JDBC의 고통 😱                  | 영속성 컨텍스트의 해결책 🦸      | 비서의 행동                              |
 | ------------------------------- | -------------------------------- | ---------------------------------------- |
@@ -19,6 +23,10 @@ tags: [spring, jpa]
 | **3. SQL 무한 수정**            | **변경 감지 (Dirty Checking)**   | "바뀐 거 제가 알아서 체크하고 고칠게요." |
 | **4. 네트워크 낭비**            | **쓰기 지연 (Write Behind)**     | "모았다가 한 번에 처리합니다."           |
 | **5. 리소스 누수**              | **생명주기 관리**                | "문 열고 닫는 건 제가 알아서 합니다."    |
+
+<br>
+
+## 영속성 컨텍스트의 동작 과정
 
 ```java title="PersistenceContextTest.java" {44-46}
 package org.example.hellojpa;
@@ -92,17 +100,25 @@ public class PersistenceContextTest {
 >
 > 이것이 영속성 컨텍스트가 변경 사항을 모아두고 한 번에 처리한다는 의미이다.
 
+<br>
+
 ## JPA 구성 요소
 
 > `JpaRepository`의 `save()`, `findById()` 같은 편리한 메서드들이 내부적으로 어떻게 동작하는지 이해하려면, `JpaRepository`라는 껍데기 안에서 실제 일을 수행하는 핵심 객체인 `EntityManager`를 반드시 알아야 한다.
+
+<br>
 
 ### JPA (Java Persistence API)
 
 자바 객체와 DB 테이블을 어떻게 매핑하고 어떻게 다룰 것인가에 대한 규칙과 인터페이스의 집합
 
+<br>
+
 ### EntityManager
 
 영속성 컨텍스트에 접근하고, 엔티티의 생명주기(저장, 조회, 수정, 삭제)를 관리하는 실질적인 관리자
+
+<br>
 
 ### Persistence Context (영속성 컨텍스트)
 
@@ -110,11 +126,15 @@ public class PersistenceContextTest {
 
 `EntityManager`가 생성되면 그 내부에 `Persistence Context`가 생성되고, `em.persist(user)`를 호출하면 `user` 엔티티는 DB가 아니라 바로 이 영속성 컨텍스트(Map 구조의 저장소)에 보관된다.
 
+<br>
+
 ### JpaRepository
 
 우리가 자주 쓰는 CRUD 기능(`save`, `findAll` 등)을 미리 만들어둔 인터페이스
 
 `JpaRepository`의 메서드를 호출하면, 스프링 내부적으로 `EntityManager`를 호출하여 코드를 실행한다.
+
+<br>
 
 > **흐름 요약**
 >
@@ -123,6 +143,8 @@ public class PersistenceContextTest {
 > 3. `EntityManager`: `em.persist(user)`를 실행한다.
 > 4. 영속성 컨텍스트: `user` 엔티티가 1차 캐시에 저장된다. (아직 DB에 가지 않음)
 > 5. 트랜잭션 커밋: 트랜잭션이 끝나는 시점에 `EntityManager`가 영속성 컨텍스트의 변경 사항을 감지하여 SQL을 만들고 DB에 보낸다.
+
+<br>
 
 ## 1차 캐시, DB 접근 최소화
 

@@ -18,6 +18,8 @@ tags: [proxy]
 
 ![프록시 이미지1](https://www.dropbox.com/scl/fi/xg462m1apaia9gdbi24hm/proxy1.png?rlkey=kogdkw5nwlc3xpgo7a6x49v7g&st=7v98hgtr&dl=1 "이미지 출처 : https://velog.io/@younghyun/series/Network")
 
+<br>
+
 ## 포워드 프록시(Forward Proxy) ?
 
 **보내려고 하는 요청**을 **관리** 또는 **보안 처리**를 위한 용도로 사용하는 서버를 **포워드 프록시(Forward Proxy)** 서버 라고 한다.
@@ -25,6 +27,8 @@ tags: [proxy]
 포워드 프록시 서버의 대표적인 예시로 **회사 방화벽**이 있다. 회사 내부에 있는 컴퓨터로 ChatGPT에 접속하려는데 차단되는 경우가 있다. 이 경우 포워드 프록시 서버가 보내려는 요청을 감시하면서 위험하다고 판단되는 사이트에 접속하지 못하게 차단 설정을 한 것이다.
 
 ![프록시 이미지2](https://www.dropbox.com/scl/fi/08ja0lut1ws9iywdwsggy/proxy2.png?rlkey=esxgfb0o7w5hoie1n81f1pvif&st=ec4khzix&dl=1 "이미지 출처 : https://hudi.blog/forward-proxy-reverse-proxy/")
+
+<br>
 
 ## 리버스 프록시(Reverse Proxy) ?
 
@@ -37,6 +41,8 @@ tags: [proxy]
 또한 들어오는 요청을 여러 대의 서버로 분배해주는 로드밸런싱 기능을 하게끔 셋팅할 수 있다.
 
 ![프록시 이미지2](https://www.dropbox.com/scl/fi/600gix4cflar09g04ew84/proxy3.png?rlkey=ti4tgdjj1hnhmxja3mzqacjqn&st=zbn6adnv&dl=1 "이미지 출처 : https://hudi.blog/forward-proxy-reverse-proxy/")
+
+<br>
 
 ## 리버스 프록시를 왜 사용할까?
 

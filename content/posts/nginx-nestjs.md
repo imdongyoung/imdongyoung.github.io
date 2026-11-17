@@ -30,11 +30,13 @@ EXPOSE 3000
 CMD ["node", "dist/src/main.js"]
 ```
 
+<br>
+
 ## **EC2에 HTTPS 적용**
 
-### 1\. AWS EC2 인스턴스에 프로젝트 git clone
+#### 1\. AWS EC2 인스턴스에 프로젝트 git clone
 
-### 2\. Ubuntu에 Docker 설치
+#### 2\. Ubuntu에 Docker 설치
 
 ```bash
 sudo apt update
@@ -57,7 +59,9 @@ sudo apt update
 sudo apt install -y docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
 ```
 
-### 3.  80번 포트로 먼저 배포 후 접속 확인
+<br>
+
+#### 3.  80번 포트로 먼저 배포 후 접속 확인
 
 인증서 파일이 없기 때문에 443 서버 블록이 있으면 에러가 발생할 수 있음
 
@@ -110,7 +114,9 @@ services:
       - ./certbot/conf:/etc/letsencrypt
 ```
 
-### 4\. 컨테이너 실행 후 최초 SSL 인증서 발급
+<br>
+
+#### 4\. 컨테이너 실행 후 최초 SSL 인증서 발급
 
 ```bash
 sudo docker compose run --rm --entrypoint "" certbot \
@@ -123,7 +129,9 @@ certbot certonly \
   --no-eff-email
 ```
 
-### 5\. nginx, docker 설정을 HTTPS용으로 수정
+<br>
+
+#### 5\. nginx, docker 설정을 HTTPS용으로 수정
 
 ```nginx title="nginx/conf.d/default.conf"
 server {
@@ -199,4 +207,6 @@ services:
     entrypoint: "/bin/sh -c 'trap exit TERM; while :; do certbot renew; sleep 12h & wait $!; done;'"
 ```
 
-### 6\. Nginx 재시작 후 HTTPS 접속 확인
+<br>
+
+#### 6\. Nginx 재시작 후 HTTPS 접속 확인

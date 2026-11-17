@@ -12,9 +12,13 @@ tags: [ci/cd, ecr]
 - PR 생성 시 테스트만 진행, push가 발생하면 배포 진행
 - GitHub runners와 EC2에 aws cli를 설치하지 않으면 에러 발생
 
+<br>
+
 ### ECR 설정
 
 [ECR 설정 방법](https://imdongyoung.github.io/posts/cicd-docker/#%EA%B5%AC%EC%B6%95-%EA%B3%BC%EC%A0%95)
+
+<br>
 
 ### workflow 파일
 
@@ -153,15 +157,21 @@ jobs:
           docker image prune -f # 사용하지 않는 Docker 이미지 정리
 ```
 
+<br>
+
 ### docker-compose.yml 파일 수정
 
 EC2에 배포할때 IMAGE_NAME과 IMAGE_TAG를 환경 변수로 만들어주고 있기에 백엔드의 image 이름을 이미지처럼 수정
 
 ![cicd2](https://www.dropbox.com/scl/fi/twtje7hl0ab8m70srzbo3/cicd-ecr2.png?rlkey=6kqv5tof99e703awh3o31y7gr&st=vz9dyqrn&dl=1)
 
+<br>
+
 ### Github Secrets 등록
 
 ![cicd3](https://www.dropbox.com/scl/fi/em58ibhowjniiqo7n9zdt/cicd-ecr3.png?rlkey=6yixyp6oq0lzpkxenw8on8gue&st=0ejxwx34&dl=1)
+
+<br>
 
 ### Github runner 등록
 
@@ -177,6 +187,8 @@ Status가 Online 혹은 Idle이여야하고 workflow에 서버를 runs-on: \[sel
 
 ![cicd6](https://www.dropbox.com/scl/fi/1uj3nx33vjq68eo5jra1d/cicd-ecr6.png?rlkey=6aqax54dbssmkl9040out4fle&st=mhg5dsbv&dl=1)
 
+<br>
+
 ### AWS CLI 설치
 
 ```bash
@@ -189,6 +201,8 @@ sudo ./aws/install
 # 설치 확인
 aws --version
 ```
+
+<br>
 
 ### EC2 docker 권한 부여
 
