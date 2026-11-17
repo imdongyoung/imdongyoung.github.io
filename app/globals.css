@@ -359,27 +359,28 @@ figure:hover .copy-btn, .copy-btn:focus-visible { opacity: 1; }
    모바일 (640px 미만): 좁은 화면에서 한 줄에 글자가 더 들어가도록 한 단계씩 작게
    ===================================================================== */
 @media (max-width: 639px) {
-  .prose { --lh: 28px; --rule-y: 22px; font-size: 16px; }
+  /* 본문 15px: ## (26px)·### (21px)과 크기 차이가 분명하게 */
+  .prose { --lh: 26px; --rule-y: 20px; font-size: 15px; }
   .prose :where(h2) { font-size: 26px; -webkit-text-stroke-width: .5px; }
   .prose :where(h3) { font-size: 21px; }
-  .prose :where(h4) { font-size: 16px; }
-  .prose :not(pre) > code { font-size: 13.5px; padding: 0 4px; }
+  .prose :where(h4) { font-size: 15px; }
+  .prose :not(pre) > code { font-size: 13px; padding: 0 4px; }
 
   /* 포스트잇 상자: 안쪽 여백을 줄여 글 폭 확보 */
-  .prose blockquote { padding: 12px 14px; margin-bottom: 28px; }
+  .prose blockquote { padding: 12px 14px; margin-bottom: 26px; }
 
   /* 표: 칸을 억지로 좁히지 않고, 칸마다 최소 폭을 두어 가로로 밀어 볼 수 있게 */
-  .prose table { font-size: 14px; line-height: 22px; margin-bottom: 28px; }
+  .prose table { font-size: 14px; line-height: 22px; margin-bottom: 26px; }
   .prose thead th { font-size: 13px; padding: 8px 10px; }
   .prose tbody td { padding: 8px 10px; }
   .prose :is(td, th) { min-width: 7.5em; }
 
   /* 코드: 글자를 줄이고 양옆 여백을 줄여 한 줄에 더 많이 (긴 줄은 옆으로 밀어서 보기) */
-  .prose figure[data-rehype-pretty-code-figure] { margin-bottom: 28px; border-radius: 10px; }
+  .prose figure[data-rehype-pretty-code-figure] { margin-bottom: 26px; border-radius: 10px; }
   .prose figure[data-rehype-pretty-code-figure] pre { font-size: 12.5px; line-height: 20px; padding: 12px 0; }
   .prose pre [data-line] { padding: 0 12px; }
   .prose pre code[data-line-numbers] > [data-line]::before { width: 18px; margin-right: 10px; }
   .prose [data-rehype-pretty-code-title] { min-height: 40px; padding: 6px 88px 6px 12px; font-size: 12px; }
 
-  .prose img, .prose .post-figure { margin-bottom: 28px; }
+  .prose img, .prose .post-figure { margin-bottom: 26px; }
 }
