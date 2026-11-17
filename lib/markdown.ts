@@ -1,6 +1,10 @@
 import { unified } from "unified";
 import remarkParse from "remark-parse";
 import remarkGfm from "remark-gfm";
+// 한국어 문장에서 **굵게**가 깨지는 문제 해결: 닫는 ** 바로 앞이 ) ' " 같은 문장 부호이고
+// 바로 뒤가 한글(예: **프록시(Proxy)**란)이면 표준 마크다운은 굵게로 인식하지 못합니다.
+import remarkCjkFriendly from "remark-cjk-friendly";
+import remarkCjkFriendlyGfmStrikethrough from "remark-cjk-friendly-gfm-strikethrough";
 import remarkRehype from "remark-rehype";
 import rehypeSlug from "rehype-slug";
 import rehypeAutolinkHeadings from "rehype-autolink-headings";
@@ -38,6 +42,8 @@ const prettyCode: Options = {
 const processor = unified()
   .use(remarkParse)
   .use(remarkGfm)
+  .use(remarkCjkFriendly)
+  .use(remarkCjkFriendlyGfmStrikethrough)
   .use(remarkRehype, { allowDangerousHtml: true })
   .use(rehypeImages)
   .use(rehypeSlug)

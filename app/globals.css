@@ -78,7 +78,8 @@
 
   /* 본문: Pretendard (긴 글 가독성) / 제목: 밍기적체 손글씨 / 코드: JetBrains Mono */
   --font-sans: "Pretendard Variable", Pretendard, -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Malgun Gothic", sans-serif;
-  --font-hand: var(--font-mingijuk), "Pretendard Variable", Pretendard, "Apple SD Gothic Neo", sans-serif;
+  /* 기본 파일에 없는 글자는 "Mingijuk Rest"(보충 파일)가 채워서 모든 한글이 손글씨로 보입니다 */
+  --font-hand: var(--font-mingijuk), "Mingijuk Rest", "Pretendard Variable", Pretendard, "Apple SD Gothic Neo", sans-serif;
   --font-mono: var(--font-jetbrains), "D2Coding", ui-monospace, "SF Mono", Menlo, Consolas, monospace;
 
   /* 반경 체계 (HIG의 둥근 모서리): 카드 16px · 글 종이 20px · 작은 요소 10px · 캡슐 999px */
@@ -222,25 +223,31 @@ body {
   --tw-prose-code: var(--ink);
   --tw-prose-th-borders: var(--line);
   --tw-prose-td-borders: var(--line);
+  --lh: 32px;                  /* 본문 줄 높이 = 괘선 간격 (모바일에서 줄어듦) */
   font-size: 17px;
-  line-height: 32px;
+  line-height: var(--lh);
   max-width: 42em;
 }
 /* 글이 있는 블록은 괘선 배경. 여백 대신 아래 패딩 32px(빈 줄 한 칸)을 두어 줄이 이어집니다. */
 .prose :where(p, ul, ol, h2, h3, h4) {
-  margin: 0; padding-bottom: 32px;
+  margin: 0; padding-bottom: var(--lh);
   background-image: linear-gradient(to bottom, transparent calc(var(--rule-y) - 1px), var(--rule) calc(var(--rule-y) - 1px), var(--rule) var(--rule-y), transparent var(--rule-y));
-  background-size: 100% 32px;
+  background-size: 100% var(--lh);
 }
 .prose :where(ul, ol) { padding-left: 1.4em; }
 .prose :where(li) { margin: 0; padding: 0; }
 .prose :where(li > p) { padding-bottom: 0; background: none; }
 .prose :where(li)::marker { color: var(--accent); }
 .prose :where(strong, b) { font-weight: 700; }
-.prose :where(h2) { font-family: var(--font-hand); letter-spacing: 0; font-size: 32px; line-height: 32px; padding-top: 32px; color: var(--accent); }
+/* ## : 손글씨 네이비. 밍기적체는 굵기가 하나뿐이라, 글자와 같은 색의 얇은 외곽선으로 굵게 보이게 합니다. */
+.prose :where(h2) {
+  font-family: var(--font-hand); letter-spacing: 0; font-size: 32px; line-height: var(--lh); padding-top: var(--lh); color: var(--accent);
+  -webkit-text-stroke: .7px currentColor; paint-order: stroke fill;
+}
 .prose :where(h2):first-child { padding-top: 0; }
-.prose :where(h3) { font-size: 20px; line-height: 32px; font-weight: 700; letter-spacing: -.015em; }
-.prose :where(h4) { font-size: 17px; line-height: 32px; font-weight: 700; color: var(--accent); }
+/* ### : 손글씨, 본문과 같은 검정 */
+.prose :where(h3) { font-family: var(--font-hand); letter-spacing: 0; font-size: 26px; line-height: var(--lh); color: var(--ink); }
+.prose :where(h4) { font-size: 17px; line-height: var(--lh); font-weight: 700; color: var(--accent); }
 .prose :where(h2, h3, h4) { scroll-margin-top: 24px; }
 .prose .heading-anchor { margin-left: 10px; color: var(--muted); text-decoration: none; opacity: 0; background: none; }
 .prose :where(h2, h3, h4):hover .heading-anchor { opacity: 1; }
@@ -347,3 +354,32 @@ figure:hover .copy-btn, .copy-btn:focus-visible { opacity: 1; }
 .prose .post-figure { margin: 0 0 32px; }
 .prose .post-figure img { margin: 0 auto; }
 .prose .post-figure figcaption { margin-top: 8px; text-align: center; font-size: 14px; line-height: 22px; color: var(--muted); }
+
+/* =====================================================================
+   모바일 (640px 미만): 좁은 화면에서 한 줄에 글자가 더 들어가도록 한 단계씩 작게
+   ===================================================================== */
+@media (max-width: 639px) {
+  .prose { --lh: 28px; --rule-y: 22px; font-size: 16px; }
+  .prose :where(h2) { font-size: 26px; -webkit-text-stroke-width: .5px; }
+  .prose :where(h3) { font-size: 21px; }
+  .prose :where(h4) { font-size: 16px; }
+  .prose :not(pre) > code { font-size: 13.5px; padding: 0 4px; }
+
+  /* 포스트잇 상자: 안쪽 여백을 줄여 글 폭 확보 */
+  .prose blockquote { padding: 12px 14px; margin-bottom: 28px; }
+
+  /* 표: 칸을 억지로 좁히지 않고, 칸마다 최소 폭을 두어 가로로 밀어 볼 수 있게 */
+  .prose table { font-size: 14px; line-height: 22px; margin-bottom: 28px; }
+  .prose thead th { font-size: 13px; padding: 8px 10px; }
+  .prose tbody td { padding: 8px 10px; }
+  .prose :is(td, th) { min-width: 7.5em; }
+
+  /* 코드: 글자를 줄이고 양옆 여백을 줄여 한 줄에 더 많이 (긴 줄은 옆으로 밀어서 보기) */
+  .prose figure[data-rehype-pretty-code-figure] { margin-bottom: 28px; border-radius: 10px; }
+  .prose figure[data-rehype-pretty-code-figure] pre { font-size: 12.5px; line-height: 20px; padding: 12px 0; }
+  .prose pre [data-line] { padding: 0 12px; }
+  .prose pre code[data-line-numbers] > [data-line]::before { width: 18px; margin-right: 10px; }
+  .prose [data-rehype-pretty-code-title] { min-height: 40px; padding: 6px 88px 6px 12px; font-size: 12px; }
+
+  .prose img, .prose .post-figure { margin-bottom: 28px; }
+}

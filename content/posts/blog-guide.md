@@ -1,6 +1,6 @@
 ---
 title: 마크다운 작성 가이드
-date: 2026-11-17
+date: 2026-05-01
 category: Markdown
 description: 마크다운 작성 가이드입니다.
 tags: [markdown]

@@ -13,9 +13,10 @@ export default function PostList({ posts }: { posts: PostMeta[] }) {
     return <p className="card p-10 text-center text-muted">아직 글이 없습니다.</p>;
   }
   return (
-    <ul className="grid gap-4 sm:gap-5">
+    // grid-cols-1(= minmax(0, 1fr)) + min-w-0: 긴 제목이 한 줄 말줄임이어도 칸이 목록 폭보다 넓어지지 않게
+    <ul className="grid grid-cols-1 gap-4 sm:gap-5">
       {posts.map((p) => (
-        <li key={p.slug}>
+        <li key={p.slug} className="min-w-0">
           <article className="card lift group font-hand relative flex h-[228px] overflow-hidden">
             <div className="flex min-w-0 flex-1 flex-col p-5 sm:px-7 sm:py-6">
               <div className="flex items-center gap-2 overflow-hidden text-[16px] leading-6 whitespace-nowrap text-muted tabular-nums">

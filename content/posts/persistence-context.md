@@ -8,9 +8,9 @@ tags: [spring, jpa]
 
 ## 영속성 컨텍스트란?
 
-> 영속성 컨텍스트(Persistence Context)는 "엔티티를 영구 저장하는 환경"이라는 뜻으로, 애플리케이션과 DB 사이에서 데이터를 관리하는 가상의 계층이다.
+> 영속성 컨텍스트(Persistence Context)는 엔티티를 논리하는 논리적 공간이다. 저장은 DB가 하고, 영속성 컨텍스트는 EntityManager가 살아 있는 동안(보통 트랜잭션 하나) 엔티티의 상태를 추적한다.
 
-![영속성 컨텍스트 구조](https://previews.dropbox.com/p/thumb/ADTXZbQh-4LbK23KQHmzlZV5fxFFQkjuazOs59yRgEWqyP_L5-00nu8FI6dvLHSyMWhNpOAW3yut3I35QP5ue4RibJ3StYo4KTdFTlJBxBQJwhfKGXrU71LXdyzVsUgJV5XwmkUn8lQ-D9o78ZdQgwJR24goDjNTmsLLHTiV_DqmKHr2eVki5pf2qw3PntOrJ5fJjDCFEzOw5lgOChg_FASAB2hbPmvSPuarh1I47_CGRY0E59ndhZ7Ss_nTUyqD8Qj6S9r2ZmBBr67Ut-AjPV5f4U3CZu5rJncAqF_5W5kH2Q/p.png)
+![영속성 컨텍스트 구조](https://www.dropbox.com/scl/fi/3fiwtp8o2747xwydzfw8k/persistence-context.png?rlkey=2m3j4ozxxi8g047fkq22s4fdr&st=45p6hwxi&dl=1)
 
 | JDBC의 고통 😱                  | 영속성 컨텍스트의 해결책 🦸      | 비서의 행동                              |
 | ------------------------------- | -------------------------------- | ---------------------------------------- |
@@ -92,7 +92,7 @@ public class PersistenceContextTest {
 >
 > 이것이 영속성 컨텍스트가 변경 사항을 모아두고 한 번에 처리한다는 의미이다.
 
-## Entity Manager
+## JPA 구성 요소
 
 > `JpaRepository`의 `save()`, `findById()` 같은 편리한 메서드들이 내부적으로 어떻게 동작하는지 이해하려면, `JpaRepository`라는 껍데기 안에서 실제 일을 수행하는 핵심 객체인 `EntityManager`를 반드시 알아야 한다.
 

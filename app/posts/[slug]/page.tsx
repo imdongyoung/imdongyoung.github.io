@@ -30,7 +30,7 @@ export default async function PostPage({ params }: Props) {
   return (
     // 노트 한 장: 왼쪽 빨간 여백선, 본문은 괘선 위에. 넓은 화면에서는 오른쪽에 목차
     <RailLayout label="이 글의 목차" rail={post.toc.length > 0 ? <Toc items={post.toc} /> : undefined}>
-    <article className="paper margin-line pt-10 pr-5 pb-10 pl-10 [--margin-x:24px] sm:pt-12 sm:pr-12 sm:pl-[76px] sm:[--margin-x:48px]">
+    <article className="paper margin-line pt-8 pr-4 pb-8 pl-7 [--margin-x:16px] sm:pt-12 sm:pr-12 sm:pb-10 sm:pl-[76px] sm:[--margin-x:48px]">
       {/* 글 머리: 메타 → 큰 제목 → 설명 → 태그, 아래 구분선 */}
       <header className="mb-8">
         <div className="flex flex-wrap items-center gap-x-2 gap-y-2 text-footnote text-muted tabular-nums">

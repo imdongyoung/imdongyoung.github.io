@@ -5,3 +5,7 @@ next-env.d.ts
 *.tsbuildinfo
 .DS_Store
 skills
+# 빌드할 때 scripts/subset-font.mjs가 만드는 폰트 (원본은 fonts-src/)
+app/fonts/mingijuk/Mingijuk.woff2
+app/fonts/mingijuk/Mingijuk-rest.woff2
+app/fonts/mingijuk/rest.css

@@ -6,9 +6,27 @@ import { visit } from "unist-util-visit";
 
 const basePath = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
 
-// "/images/a.png" → "/repo/images/a.png" (GitHub Pages 하위 경로 대응). 외부 URL은 그대로.
+// Dropbox 공유 링크(…/scl/fi/… 또는 …/s/…)는 기본이 미리보기 페이지(dl=0)라서 이미지로 안 보입니다.
+// raw=1로 바꾸면 로그인하지 않은 방문자에게도 이미지 파일이 바로 보입니다.
+function fixDropbox(src: string) {
+  let url: URL;
+  try {
+    url = new URL(src);
+  } catch {
+    return src;
+  }
+  if (url.hostname === "www.dropbox.com" || url.hostname === "dropbox.com") {
+    url.searchParams.delete("dl");
+    url.searchParams.set("raw", "1");
+    return url.toString();
+  }
+  return src;
+}
+
+// 이미지 주소 정리: Dropbox 공유 링크 변환 + "/images/a.png" → "/repo/images/a.png" (GitHub Pages 하위 경로)
 export function withBase(src: string) {
-  return src.startsWith("/") && !src.startsWith("//") ? `${basePath}${src}` : src;
+  const fixed = fixDropbox(src);
+  return fixed.startsWith("/") && !fixed.startsWith("//") ? `${basePath}${fixed}` : fixed;
 }
 
 // 본문에서 첫 번째 이미지 주소를 찾습니다. 마크다운 ![]()와 <img src="">를 모두 봅니다.

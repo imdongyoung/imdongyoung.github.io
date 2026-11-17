@@ -19,9 +19,16 @@ export type PostMeta = {
 
 export type Post = PostMeta & { html: string; toc: TocItem[] };
 
-// 카테고리 이름 → URL 조각. 영문은 소문자-하이픈, 한글 등은 그대로 둡니다.
+// 카테고리·태그 이름 → URL 조각.
+// 영문·숫자·한글만 남기고 나머지(/, 공백, 점, 괄호 등)는 하이픈으로 바꿉니다.
+// 예: "CI/CD" → "ci-cd", "Spring Boot" → "spring-boot", "Node.js" → "node-js"
+// ("/"가 남으면 주소가 /categories/ci/cd/ 처럼 폴더로 나뉘어 404가 납니다)
 export function toCategorySlug(name: string) {
-  return name.trim().toLowerCase().replace(/\s+/g, "-");
+  return name
+    .trim()
+    .toLowerCase()
+    .replace(/[^a-z0-9가-힣]+/g, "-")
+    .replace(/^-+|-+$/g, "") || "etc";
 }
 
 function readFile(slug: string) {
