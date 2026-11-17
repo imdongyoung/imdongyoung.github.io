@@ -32,6 +32,23 @@ function rehypeToc() {
   };
 }
 
+// 표를 <div class="table-scroll">로 감쌉니다. 넓은 표는 이 상자 안에서 옆으로 밀어서 보고,
+// 표 자체는 상자 폭을 꽉 채웁니다. (표에 display:block을 주면 폭을 다 채우지 못해서 이렇게 분리)
+function rehypeTableWrap() {
+  return (tree: Root) => {
+    visit(tree, "element", (node: Element, index, parent) => {
+      if (node.tagName !== "table" || !parent || index === undefined) return;
+      if (parent.type === "element" && (parent.properties.className as string[] | undefined)?.includes("table-scroll")) return;
+      parent.children[index] = {
+        type: "element",
+        tagName: "div",
+        properties: { className: ["table-scroll"] },
+        children: [node],
+      };
+    });
+  };
+}
+
 const prettyCode: Options = {
   // 디자인처럼 코드 블록은 라이트/다크 모두 어두운 배경을 씁니다.
   theme: "one-dark-pro",
@@ -48,6 +65,7 @@ const processor = unified()
   .use(rehypeImages)
   .use(rehypeSlug)
   .use(rehypeToc)
+  .use(rehypeTableWrap)
   .use(rehypeAutolinkHeadings, {
     behavior: "append",
     properties: { className: ["heading-anchor"], ariaHidden: "true", tabIndex: -1 },
