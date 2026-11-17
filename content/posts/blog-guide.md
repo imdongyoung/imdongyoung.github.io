@@ -3,7 +3,7 @@ title: 마크다운 작성 가이드
 date: 2026-11-17
 category: Markdown
 description: 마크다운 작성 가이드입니다.
-tags: [Markdown]
+tags: [markdown]
 ---
 
 # 블로그 글 작성 가이드
