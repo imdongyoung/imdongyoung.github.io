@@ -24,7 +24,7 @@ const jetbrainsMono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-  title: { default: site.title, template: `%s · ${site.title}` },
+  title: { default: "imdongyoung의 기록", template: "%s · imdongyoung의 기록" },
   description: site.description,
 };
 
@@ -32,7 +32,11 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   const categories = getCategories();
   const total = getAllPosts().length;
   return (
-    <html lang="ko" className={`${mingijuk.variable} ${jetbrainsMono.variable}`} suppressHydrationWarning>
+    <html
+      lang="ko"
+      className={`${mingijuk.variable} ${jetbrainsMono.variable}`}
+      suppressHydrationWarning
+    >
       <head>
         <script dangerouslySetInnerHTML={{ __html: themeInitScript }} />
         {/* 본문: Pretendard (한글은 쓰인 글자만 내려받는 dynamic subset) */}
