@@ -6,7 +6,7 @@ description: Docker로 컨테이너 기반 GitHub Actions의 CI/CD를 구현하�
 tags: [ci/cd, github-actions, docker]
 ---
 
-![cicd-docker1](https://previews.dropbox.com/p/thumb/ADRnJenvYeqF58IaZfwCTR81cuAMGOtEVAdBufCTYVTpQBzuG71sPBSHKzd0merBoPKGGjKcDOrx3Vxsf9VH3XPg30Y7z6EjL3aLl-2GEPyuqCT9NYdwufoF5kJLpyGDCFrMY21OSBIMCfKhXy2cpztYyJ8iEJKYvcBzuwuEzYsLyn2z_sxjXw9f6nRTitUKOg6eAfDEbLZ3JUfiNRhouSUfRAXFRjOJBCGCbpVfQJ0R00kfvyHNEKiG8rdPuyF7863MxKVKals4gWTYxkstdTZoz8yXKh8gZfmrb6OUlIhsmg/p.png)
+![cicd-docker1](https://www.dropbox.com/scl/fi/diw92l5fjxeu1gotzi04t/cicd-docker1.png?rlkey=g7u6pt7q4k8hntfcpx0kyduhq&st=0mweafb4&dl=1)
 
 ## AWS ECR ?
 

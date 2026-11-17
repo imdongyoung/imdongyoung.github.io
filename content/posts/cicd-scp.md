@@ -6,7 +6,7 @@ description: SCP를 활용하여 GitHub Actions으로 CI/CD를 구현하는 방�
 tags: [ci/cd, github-actions]
 ---
 
-![cicd-scp1](https://previews.dropbox.com/p/thumb/ADREumHaKqGz-PLtZZ2fLm5u9cxTVpCYYmOVnYh7BHjyXvvOms3GVyFpD1ypcMoCV4bbvlubqhEec7MklXGdyPFJeT45yDUKq37eqU-Lhhajh_kf2MvN2IPmLlmZdNeCBgAtrcVWsuLnvBKoAmJTSgpm0z8WANkg5e1Q33q8zCaiM4_ssaYQDxppyU_2Ig3qAE0xevp-Ac_MoL5QFS9rjDI8LT4LG_o2NG5d1jnEtm-zAmvQ0df2UIvd2j1NoHlRA6H7k3rV1RhPxLAWO0avY-zdymBZPiTMg2-oIIZJbBY1qe09a77iMzQ0UoiIQvbVqsm0kOrpwxGSc5RXrsVg4p90/p.png)
+![cicd-scp1](https://www.dropbox.com/scl/fi/puucvezcq6gdmco2brtxi/cicd-scp1.png?rlkey=k5ubomolwu1oyyq0mphhhick0&st=xm1ufw32&dl=1)
 
 ## SCP ?
 

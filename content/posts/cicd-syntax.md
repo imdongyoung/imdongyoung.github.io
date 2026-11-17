@@ -58,4 +58,4 @@ jobs:
 
 ## 4\. Github 레포지토리에 생성된 Actions 확인
 
-![cicd-image](https://previews.dropbox.com/p/thumb/ADSsNDo1GXE2y0m1sWAZIvyIaEqDwbJD_sxGvSzt2il8qEc9oriv3ueZlM0uLyHDuqyO8uc5UbmCk5wHbrZcLnhchYLK10IH5VwGqkdU2HdNRPRzMSKdFSCzGmg8IJ0xasGMwz6GuF_FL_fbc9ZBCIiPHeGgngzb7zsm27neTfpe5Q_k09UMCTg3lfmQSNFImxNLZObN6Kpn0rhzzw4Q-VD4KuTR2ReXpWh3S53GS7FKfceVS1ZCyylIxx7NWGE_xxAQXkcGStsJYiUKU79m52HLyH2phRz0ZaSB-2MINRiBs5YdZ_xo82bGHnXATdsHUzpW2myhvlwNacklRbRLUs6D/p.png)
+![cicd-image](https://www.dropbox.com/scl/fi/ouwi9gpx9kxb8n4xzsku7/cicd-syntax.png?rlkey=m41n6cd9h4g11t0mhtqdsrla4&st=rmnf7x95&dl=1)

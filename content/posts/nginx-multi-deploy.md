@@ -8,7 +8,7 @@ tags: [nginx, domain]
 
 ## 1\. 먼저 하나의 도메인에 2개의 EC2 퍼블릭 IP를 연결
 
-![nginx-multi1](https://previews.dropbox.com/p/thumb/ADToBaPxKzMRZ2mNAKZYbq7gTc1qRDGSn0-W9hvPqhdoF0rAcq_oeSehavLaz7wQLhVYD-fJtoG8kvnkpHkT__MsE8cpb6VkgVIlwoU-zokoWUUiqV3_Jfvs7-39JuQ6Oo0nh4crmnYDQqD1LMveR1uViv-jo9rxebF5ZxId5Dme7vkOfHlnHZ5vBTckJpynSSoM5J0NduVKoJSuLsyh8k-HVH9q1eULT_mmYwqCRGpPIF0yZQ8N8V8QvIgeuEF9bBKmjZoz7qyeXkHsVU84NzLQHrD-ViJofGwGSyW-FSpDnb2Bx4uPz-ljwoAWglzwV7x7QZjGMtVlnM8PGvt1YFhm/p.png)
+![nginx-multi1](https://www.dropbox.com/scl/fi/v5agb70f3o1ozav8jileo/nginx-mulit1.png?rlkey=ilq71fhvpzmzvygrutlj2wjq5&st=pejzkg3q&dl=1)
 
 ## 2\. Nginx 설정 파일 수정
 
@@ -43,8 +43,8 @@ sudo nginx -s reload
 
 ## nginx-dy.p-e.kr로 접속 시 react 응답
 
-![nginx-multi2](https://previews.dropbox.com/p/thumb/ADQKGPzIFnpElBbBQ1AogVcUlRj13eiucuGnYIV5spTbFa8vHZZuI4XJq14cuGckojs6IIXWDKCs9HHMp8OBcEaaf3ceXIV5_xC9VyymKfw7KXYmYDqemFaqRMzQGQcaUY5aHTFnFv6I1KrzkQ6MOxBE_7DiH0_ionxMvDEkPRlOH5GtmJX42zLOzcMG6batjJZjOjbqgKE82CGn6x388vQZMZizVOlL8C5ruzbqXabS9AkVo14pHW-iahrvdrjE_C53uwJpTWkibCvw2m2VvLOnYeA4nGeT--vT8sgyCGhb-RvSVH3MtcQYts1_AysLrmHZRMimLAAYuwZzh_d45mQi/p.png)
+![nginx-multi2](https://www.dropbox.com/scl/fi/s9v9caaruodptflz9i3zu/nginx-multi2.png?rlkey=wgq8h1dcojbbnb9f7chdjn1nd&st=ly78xdqx&dl=1)
 
 ## admin.nginx-dy.p-e.kr로 접속 시 next 응답
 
-![nginx-multi3](https://previews.dropbox.com/p/thumb/ADQrNStraB4TBmGWah3dY7ejXuENp4epe31XgVSAq6vWet3-bE5fJGR4dTdse1p5rWCmCkAkVbG8M7BkFq8Tte8uquw65XjecM7np-Qflbgnhq1wxkICnHckn2pzZF-RVoG2IeRegblda9QSA9P6BLKlODFKZ7YmF8avwaZnXLArfPnVB3sSWL82hybQdKkO-AFTqj2wA0cRC7Itoh2h9iuSMl6Tfrb4P66egyg7PPZ0Q0XGbBqzbHTQChg62P4ggeE2ev0iVej5XGU8ZyYpAUlfAteOc1Fe-_0N6g9TihN_GbeSiU5zGGRnnHT9lIVN78TAgPV-2qGNOUPoRQ6zjXVQ/p.png)
+![nginx-multi3](https://www.dropbox.com/scl/fi/qiua8nmdq68sqxt7halum/nginx-multi3.png?rlkey=9hd8u7k3ka8rtdplxkqjszhh5&st=ocmw8pul&dl=1)

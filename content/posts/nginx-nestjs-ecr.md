@@ -6,7 +6,7 @@ description: NestJS 프로젝트에 Github Actions와 ECR을 활용하여 CI/CD 
 tags: [ci/cd, ecr]
 ---
 
-![cicd1](https://previews.dropbox.com/p/thumb/ADRfj33YGJpzPFd-Fv48l7bcwOERI-68m4Cui5tlgfrbxvXzscW9CpisEm__iBDE26KJ36gio-I7kCxRc2zjWaaKHkzPm58E9Mop3XJnfcPUV6E_tnsyWtz2Sy6Sk-UddY_gB_K-9QeClu2A8xiubvwUZcgmlIGVZGEj_UHlVya3WzsfEvSjKvhLviN2qaibcwCphZOuXOkkMxfQz665OBaLqSiBC-8UVaotydFhPMMacTvATDdyA7-LnJ9mpmvKRP351VGwzQ-BqDeoFAhAcrlUafBXbn-yr75i0sYKGMq9FzHJ3JtH0u_UxNBecIrWz-5le97iphqQcoROseg2DnFB/p.png)
+![cicd1](https://www.dropbox.com/scl/fi/htivr5fxv9m8otl5ot0l3/cicd-ecr1.png?rlkey=vxb09p9v9v2ac7onsm4zva7kx&st=tkew5xcj&dl=1)
 
 - main, develop 브랜치에 push 및 PR 발생 시 실행되는 워크플로우
 - PR 생성 시 테스트만 진행, push가 발생하면 배포 진행
@@ -157,25 +157,25 @@ jobs:
 
 EC2에 배포할때 IMAGE_NAME과 IMAGE_TAG를 환경 변수로 만들어주고 있기에 백엔드의 image 이름을 이미지처럼 수정
 
-![cicd2](https://previews.dropbox.com/p/thumb/ADSk1WSoh7CBRUvlv3MVilMPQ3-nSt-FbNqmjO8v78bATM9OB7lNnCxMIiUgMyxTOHCzq8GtCiAr29IUbnDcrd1vFRkWcRaH9JHCaAZ7X4AUvqkjlBsYAPiENFTuIwUT68kwizsasgbHu8Z4pf33VOe0P468VglTvHQoPTWVade9M2_6AJAJLPaAlgl3-_nF1w_nuS_DkokuritNUXDkrSPgo6yjn-1mtzqIkXZ3tGIN3o_w8SFbG2Rc6Y_vmbbpkjO-NGsJXtfJWceTntOEdOOYEoYOaFzrZM0yQuSgg1RJTlU5H28rzARqyqOrdk8icB34SpSe-JJX5xVnE6BBH98G/p.png)
+![cicd2](https://www.dropbox.com/scl/fi/twtje7hl0ab8m70srzbo3/cicd-ecr2.png?rlkey=6kqv5tof99e703awh3o31y7gr&st=vz9dyqrn&dl=1)
 
 ### Github Secrets 등록
 
-![cicd3](https://previews.dropbox.com/p/thumb/ADSthI7kVPRIJW4xCKf2HQ2_HyVyKpBOvYWxJMQiF18CyPiUd_SgkEPVr7PbiYFIllUN4Y41XRHBfz5uoxj16uYPcs3-hWrckryLWM6hyI1ceh_YhhPnWJj0z-bOlkH3bqNvYwlWqr9DKuqyDIFWdbseY13LvO1-EABJouaoSSHsOY7ZGc6S1qxt4_ntCdPPf5PPvFfUB6GrwEUbRTjx-5-T6FSPv2j5Dtdejvs5ZwlXU38ecML28I4XpW8w8DDppF6W0ZWObE4htD0EunoT3UXw9NKZoCdODr1jMOJZbpenDiF-qubY2gzKzp_ahUyD27N6mYOcrunDBqcwGijlVvPJ/p.png)
+![cicd3](https://www.dropbox.com/scl/fi/em58ibhowjniiqo7n9zdt/cicd-ecr3.png?rlkey=6yixyp6oq0lzpkxenw8on8gue&st=0ejxwx34&dl=1)
 
 ### Github runner 등록
 
 GitHub Repository -> Setttings -> Actions -> Runners 
 
-![cicd4](https://previews.dropbox.com/p/thumb/ADSeJgTomWyxunzczI7_WKfZYi8G6kWgmsIQRWImci43B64ye2zaabdQXEBvr4wn9sQET-ky_UEY6aoP99cAztvKYnTbPAbxBS2K2Oy7sWxlrwemUYlcn3sy4nZ_l7yAtQdEf0wX6jKbICVkYFx_wClduvsCTz-Je7B5UXZTAAHrFDdurwQnVhAbqFj8Frvms6HOiL3tWcUIucE5_tcNqjT2SSKj09ykankGpEUVduqkbBElVUZBzC_jH65RhI4apyt86pxJOXiw2vUJ-4hkZRK7SnR5IHp8LQPv-n-qyQKtDRPvAAFPCYF82heJyfQItHzucqZVOnLL5O0v7AQoFj8b/p.png)
+![cicd4](https://www.dropbox.com/scl/fi/02r44lb8olh39ng2vvzvy/cicd-ecr4.png?rlkey=84oxlpeq0tmdhuqbocde952vq&st=5nboon6x&dl=1)
 
 오른쪽 상단에 New self-hosted runner 클릭 후 EC2 운영체제에 맞게 선택 후 명령어를 EC2에 입력
 
-![cicd5](https://previews.dropbox.com/p/thumb/ADSb_FZmFSC6ggkyyoC33zDB3Cx0bfWa7gl2OTIKINhCGlA1w--hxos0CXYgJwwNdN3XtiK1uhF8Abe4fvB-bOzaW18doAiJoMCGpv6mkkuIJUDDL7XfDD26IGeDD2w-QxRe84Zq9_0sfHtmKBqY2xOuY48ZV1vuO8l9y4UdUCIMzTVQ_yZdlBy1F8bNBY3X8kzlcmpR9ewJb_ALH67DXRAPPFLgKKTLxZo8eAoHnabkKKc7O_dn66Uhf5TGy_PVQuebblJ75zhJ8Vdv8gvnbjBv7A2ZUlCQ_qLMX9Mt3EQ2ZbFT3YXkEKQWZp8KTzb-jX1kagirUo1BEZKlkQ6VDYJZ/p.png)
+![cicd5](https://www.dropbox.com/scl/fi/1diz7unvqimyqk0ala2p8/cicd-ecr5.png?rlkey=6htzwygfzvei10rok7ygi65zr&st=ii5892t2&dl=1)
 
 Status가 Online 혹은 Idle이여야하고 workflow에 서버를 runs-on: \[self-hosted, lunchmate-runner\] 이렇게 했다면 runner 라벨에 lunchmate-runner를 추가해줘야함
 
-![cicd6](https://previews.dropbox.com/p/thumb/ADRz718bZv5Y5ZhSZ6daGuw86KEIvuOuzixrCkJEHoC7OwMwbIGGAiFeAwhAdywMLAozE_mI05iUDSsZ4qy_9W9zJrd6dyS1dFIcECM9jCoaqDBnzg5G9V6aE6v-rJAxg4xToDObT6zjfMta3P2eYl9teTVoLJBJAB-zsbM8r3ZDkemI9WFUdpaQgcCClcbHrIT4fnwwoP2D-5An0t563R9_E21urkll9LpBvEvBNIEzMeX1JQDJtl69GLXHNuPSANzAWngJ_vrdgXsx1Zh8OWgGqZFVK_1flCr51oTJjzuUBYQhtHUTM2jS_g1xpNmY4cRQcCVgbvC5OsmXEIrqfp5j/p.png)
+![cicd6](https://www.dropbox.com/scl/fi/1uj3nx33vjq68eo5jra1d/cicd-ecr6.png?rlkey=6aqax54dbssmkl9040out4fle&st=mhg5dsbv&dl=1)
 
 ### AWS CLI 설치
 
@@ -196,7 +196,7 @@ aws --version
 
 그렇지 않으면 workflow에서 권한 에러가 난다.
 
-![cicd7](https://previews.dropbox.com/p/thumb/ADQnMKfH70Bbq5Xt-Yiv1lztVMq3gfA8TF3YAsWn1fY9Fp7DLU4oPNSkRXqCTUzL0Kj-yLNyQI-0yKADOu4J5aanVBOhGRqVvDbIl0Bf1r9c4S3Lv4-XmT-lpSE0wQuHj3w0mLJcreqzHEwcU0kIcKbN6O05RVhsef7A2fsTDT6fq09Czv8ednR1RfgXypKGodU5AEtg4cyJ8AgMVHR66W3yHoSCes1EwYE3v5UGT5j18pWXDu2T_XaWM6Lurgbo-kz42n0PjKtn3yPHAtSmvHAISR3yb7ik-qsr3pfuvit1JptRf7vvd0Y7B38q7tJF92Twt566UEX_yYRJrcx41ipB/p.png)
+![cicd7](https://www.dropbox.com/scl/fi/spfhib3q7mxvgpb5ckb4v/cicd-ecr7.png?rlkey=iefhc9i7a664lxx7o8pnrpgvo&st=c55uxm6r&dl=1)
 
 권한 설정
 

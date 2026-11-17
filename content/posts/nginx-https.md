@@ -23,7 +23,7 @@ sudo certbot --nginx -d <도메인 주소>
 
 ### 인증서를 발급 받으면 HTTPS로 접속할 수 있음
 
-![nginx-https-image](https://previews.dropbox.com/p/thumb/ADRiwPjQ2rCvShldQ6XYaMI7HSP5YFjY94HalajhLz83_xYQa61O-XZ9RZh9I_7k602kdDM9rMXFfw_SXEbZKWaSrGS4uzQePf_gQC7CCbRtYRag2f--OzM6bOqYa3nmoj7eTgw56OVn1RdSeXuBxxipS5yCL4Gt5adKSPzuPLsEOozIDPygRe55dK3yfAz5mKiH-AVkPubqF37LlrtKv8uVwVwlt3k_GOsBGdLWdLdjfbMkwOUv7KC55Dy0bbHPnznR4HU2IJYxBU9em559_ulV8Uczc3rlAr0_7-orFn9qXVKyOzxRitS5DTfNwEEwJR9hWYtbEDVgfFa4rjiYUHvD/p.png?is_prewarmed=true)
+![nginx-https-image](https://www.dropbox.com/scl/fi/sxlrhcznsubyqhup15dzz/nginx-https1.png?rlkey=o5tfemdcxvue90d54u6gxtl5x&st=q9oghfvo&dl=1)
 
 ### Certbot이 작성한 Nginx 설정 파일 코드
 

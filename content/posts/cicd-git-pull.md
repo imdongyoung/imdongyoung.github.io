@@ -6,7 +6,7 @@ description: git pull 방식을 통해 GitHub Actions으로 CI/CD를 구현하�
 tags: [ci/cd, github-actions]
 ---
 
-![cicd-image](https://previews.dropbox.com/p/thumb/ADTipo07Nm2gkrtzqSQHxw7TvH-W-W3aBVdgHMGyNIiGo2r_na1O70iYCYoXfcfW-H-6QYfVJ5oc1xH6s7i-hlqqPVZ4OCzshYHAmiOuE28oAdaXBP-XH8yZVKSoUCBzz5kouBdDmqtGq0odu1ShS2M_yevuGQj_Pztk008GsvHfcaShBBKRVVFInt0eNDGBUKqrVvnoym_fiSKBGXAMDa-Xy4QspGxZK7jKE2JrPqgZNOezFqlaO66wgrMZ6-1__b73Ku22id2nRLJsnjbcQWgUS5QzCAlnONMOjeBIJogBXrzzCsqshzHFok40PgPjkI1BbHz3zWP5kSGFGleZ_hLk/p.png)
+![cicd-image](https://www.dropbox.com/scl/fi/u68orlikrhxf97yw02l2r/gitpull1.png?rlkey=w4hpq22qiqttejl6ouf34d8bp&st=74ryxq4m&dl=1)
 
 ## 장점
 

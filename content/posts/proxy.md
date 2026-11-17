@@ -16,7 +16,7 @@ tags: [proxy]
 
 이처럼 중간 역할을 하는 서버를 **프록시 서버**라고 한다.
 
-![프록시 이미지1](https://previews.dropbox.com/p/thumb/ADQxf6I0ubGeXofH5awb5BBljLw_mOP_7uvNBsbilc9qcj8h4-rI45E1SEHPylvRPkUBMNF5NPuHZXbpU0mHl8h26-BkEPnMHSr3D5Y6MbC_SFDIDAIz2tVbU9xC2rfLFl_Qcq09niv9oiQ_MV3W_FYpm1A3vB5MKnxmTfx_qQdEZePbK-NiC9uIsqX33C0YlK3c1Qx4GPQA8SAokSl4k3UsOiYBHA0jQuPZOucMEUBb-g3TkU1cG0QN7S7XNmMU79reROBnMIipm9aQ2KiXFpp68zvQLC6Yr9XmtJkBsY30qQRnRlXFzsgxiBS2nDq4VgBUsoy9js7yCEV_uheN0zRb/p.png?is_prewarmed=true "이미지 출처 : https://velog.io/@younghyun/series/Network")
+![프록시 이미지1](https://www.dropbox.com/scl/fi/xg462m1apaia9gdbi24hm/proxy1.png?rlkey=kogdkw5nwlc3xpgo7a6x49v7g&st=7v98hgtr&dl=1 "이미지 출처 : https://velog.io/@younghyun/series/Network")
 
 ## 포워드 프록시(Forward Proxy) ?
 
@@ -24,7 +24,7 @@ tags: [proxy]
 
 포워드 프록시 서버의 대표적인 예시로 **회사 방화벽**이 있다. 회사 내부에 있는 컴퓨터로 ChatGPT에 접속하려는데 차단되는 경우가 있다. 이 경우 포워드 프록시 서버가 보내려는 요청을 감시하면서 위험하다고 판단되는 사이트에 접속하지 못하게 차단 설정을 한 것이다.
 
-![프록시 이미지2](https://previews.dropbox.com/p/thumb/ADQkqV9w9y7pJVHmzZSKmS2mq8IwC6c31sokhL5glBMyDSM5T7TCwgLkHR1HTm4w6iCL_LiI3Mzdf_qhvbUk7iaH9330rD6sNTyH5cF6HU1aCbs55nUaZnOLVa8nI5_hMCUrunIpt1g5uax6o5-HRrUZP2safsOSp5JkKxqgpP3vQopUEl_yeoA6rnSQ8ive2smWlOlp_-T5TA38Gu6dyLqPk7n5blNtF3LU1CigvrLPq4KH49a4O_-VoVQwFSR6Ty_B_CSB7QSktG7lykmR1aHgd1vKFVOuVWJ2Z4p6noiVNI3Sr3Ch58RepxB21Ev0x0IUSi11f7xD4ufD_0Hc6rEO/p.png "이미지 출처 : https://hudi.blog/forward-proxy-reverse-proxy/")
+![프록시 이미지2](https://www.dropbox.com/scl/fi/08ja0lut1ws9iywdwsggy/proxy2.png?rlkey=esxgfb0o7w5hoie1n81f1pvif&st=ec4khzix&dl=1 "이미지 출처 : https://hudi.blog/forward-proxy-reverse-proxy/")
 
 ## 리버스 프록시(Reverse Proxy) ?
 
@@ -36,7 +36,7 @@ tags: [proxy]
 
 또한 들어오는 요청을 여러 대의 서버로 분배해주는 로드밸런싱 기능을 하게끔 셋팅할 수 있다.
 
-![프록시 이미지2](https://previews.dropbox.com/p/thumb/ADQJsTqY2KDEgY67sY9GqC2_x_O8lfBiqoINmAS6ZIB7rmNlwVc6IzheOjfdQks-T2Qi9swSIkp9iPZKYST_ST1bvMhIGOTktASqbHzydq5WdXX8VypFwsN6yk7tSMYFiKXVxcqEb9NB2XyRsZnhMWB-6QRTi2Ob8QThYxNtNHbzx-vgbXTiAJBHaxCHj_1MK4EldpB0q8A6YAv-TYaX3WFUMe0RAmELNTaRU7pyrgp9Yb7zjAZKguvpzmwIDTqWqtzcCBQ0KbnYFtWYvZpoUnirExYbkRPjXRykj6t7p6ZHoXhWtbsIUhGEq6QCyGAgfkkPlxIHdXez3SiSH_0Wdyfh/p.png "이미지 출처 : https://hudi.blog/forward-proxy-reverse-proxy/")
+![프록시 이미지2](https://www.dropbox.com/scl/fi/600gix4cflar09g04ew84/proxy3.png?rlkey=ti4tgdjj1hnhmxja3mzqacjqn&st=zbn6adnv&dl=1 "이미지 출처 : https://hudi.blog/forward-proxy-reverse-proxy/")
 
 ## 리버스 프록시를 왜 사용할까?
 
