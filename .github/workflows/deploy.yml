@@ -26,10 +26,13 @@ jobs:
           cache: npm
 
       - name: Set base path
-        # username.github.io 저장소면 루트(""), 그 외 저장소면 "/저장소이름"
+        # 저장소 이름이 정확히 "<계정이름>.github.io"일 때만 루트(""), 그 외에는 "/저장소이름"
+        # (예: blog.github.io 저장소는 https://<계정>.github.io/blog.github.io/ 에 배포됩니다)
         run: |
           REPO="${GITHUB_REPOSITORY#*/}"
-          if [[ "$REPO" == *.github.io ]]; then
+          LOWER_REPO="$(echo "$REPO" | tr '[:upper:]' '[:lower:]')"
+          LOWER_OWNER="$(echo "$GITHUB_REPOSITORY_OWNER" | tr '[:upper:]' '[:lower:]')"
+          if [ "$LOWER_REPO" = "$LOWER_OWNER.github.io" ]; then
             echo "NEXT_PUBLIC_BASE_PATH=" >> "$GITHUB_ENV"
           else
             echo "NEXT_PUBLIC_BASE_PATH=/$REPO" >> "$GITHUB_ENV"
