@@ -4,6 +4,7 @@ date: 2026-11-18
 category: Spring
 description: JUnit과 AsserJ로 테스트 코드를 작성하는 방법에 대해 공부해보았습니다.
 tags: [spring, test, junit]
+draft: true
 ---
 
 # JUnit ?
@@ -32,21 +33,21 @@ given-when-then 패턴은 테스트 코드를 세 단계로 구분해 작성하�
 3. then은 테스트 결과를 검증하는 단계
 
 ```java
-@DisplayName("새로운 메뉴를 저장한다.")
+@DisplayName("새로운 글을 저장한다.")
 @Test
-public void saveMenuTest() {
-  // 1. given : 메뉴를 저장하기 위한 준비 과정
-  final String name = "아메리카노";
-  final int price = 3500;
-  final Menu americano = new Menu(name, price);
+public void savePostTest() {
+  // 1. given : 글을 저장하기 위한 준비 과정
+  final String title = "오늘의 일기";
+  final String content = "일기 내용 어쩌구 저쩌구...";
+  final Post newPost = new Post(title, content);
 
   // 2. when : 실제로 메뉴를 저장
-  final long savedId = menuService.save(americano);
+  final long savedId = postService.save(newPost);
 
   // 3. then : 메뉴가 잘 추가되었는지 검증
-  final Menu savedMenu = menuService.findById(savedId).get();
-  assertThat(savedMenu.getName()).isEqualsTo(name);
-  assertThat(savedMenu.getPrice()).isEqualsTo(price);
+  final Post savedPost = postService.findById(savedId).get();
+  assertThat(savedPost.getTitle()).isEqualsTo(title);
+  assertThat(savedPost.getContent()).isEqualsTo(content);
 }
 
 ```
