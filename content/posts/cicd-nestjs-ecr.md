@@ -1,5 +1,5 @@
 ---
-title: Nginx - NestJS 프로젝트에 Github Actions, ECR을 활용한 CI/CD 파이프라인 구축
+title: CI/CD - NestJS 프로젝트에 Github Actions, ECR을 활용한 CI/CD 파이프라인 구축
 date: 2026-05-17
 category: CI/CD
 description: NestJS 프로젝트에 Github Actions와 ECR을 활용하여 CI/CD 파이프라인을 구축하는 방법에 대해 공부해보았습니다.

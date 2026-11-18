@@ -79,9 +79,10 @@ const prettyCode: Options = {
 
 const processor = unified()
   .use(remarkParse)
-  .use(remarkGfm)
+  // 취소선은 ~~두 개~~만. 물결 하나(~)는 "1~5분" 같은 범위 표기에 자주 써서 취소선으로 바꾸지 않습니다.
+  .use(remarkGfm, { singleTilde: false })
   .use(remarkCjkFriendly)
-  .use(remarkCjkFriendlyGfmStrikethrough)
+  .use(remarkCjkFriendlyGfmStrikethrough, { singleTilde: false })
   .use(remarkRehype, { allowDangerousHtml: true })
   .use(rehypeImages)
   .use(rehypeSlug)

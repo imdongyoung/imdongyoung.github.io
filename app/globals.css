@@ -200,10 +200,15 @@ body {
 }
 
 /* 사이드바 오른쪽 가장자리의 펀치 구멍 */
-/* .punched 요소는 이미 fixed/sticky로 위치가 잡혀 있어 position을 따로 주지 않습니다 */
-.punched::after {
-  content: ""; position: absolute; top: 24px; bottom: 24px; right: 12px; width: 14px; pointer-events: none;
-  background: radial-gradient(circle at 7px 7px, var(--hole) 6px, var(--line-strong) 6px 7px, transparent 7.5px) 0 0 / 14px 56px repeat-y;
+/* 펀치 구멍을 사이드바 배경으로 그립니다. background-attachment: local 이라
+   사이드바 안을 스크롤해도 구멍이 내용과 함께 움직이며 맨 아래까지 이어집니다.
+   (배경색은 bg-paper 클래스가 맡고, 여기서는 그림만 겹칩니다) */
+.punched {
+  background-image: radial-gradient(circle at 7px 7px, var(--hole) 6px, var(--line-strong) 6px 7px, transparent 7.5px);
+  background-size: 14px 56px;
+  background-repeat: repeat-y;
+  background-position: right 12px top 24px;
+  background-attachment: local;
 }
 
 /* =====================================================================

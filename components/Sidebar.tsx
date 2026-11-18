@@ -61,9 +61,17 @@ function Categories({ categories, total }: { categories: Category[]; total: numb
           const active = pathname === it.href || decodeURI(pathname) === it.href;
           return (
             <li key={it.href}>
-              <Link href={it.href} aria-current={active ? "page" : undefined} className={rowClass(active)}>
+              <Link
+                href={it.href}
+                aria-current={active ? "page" : undefined}
+                className={rowClass(active)}
+              >
                 <span className="min-w-0 flex-1 truncate">{it.name}</span>
-                <span className={`text-[17px] tabular-nums ${active ? "text-on-accent/80" : "text-muted"}`}>{it.count}</span>
+                <span
+                  className={`text-[17px] tabular-nums ${active ? "text-on-accent/80" : "text-muted"}`}
+                >
+                  {it.count}
+                </span>
               </Link>
             </li>
           );
@@ -76,13 +84,17 @@ function Categories({ categories, total }: { categories: Category[]; total: numb
 function Contacts() {
   return (
     <div>
-      <SectionTitle>연락처</SectionTitle>
+      <SectionTitle>Contact</SectionTitle>
       <ul className="grid gap-0.5">
         {site.contacts.map((c) => {
           const external = c.href.startsWith("http");
           return (
             <li key={c.label}>
-              <a href={c.href} {...(external ? { target: "_blank", rel: "noopener noreferrer" } : {})} className={rowClass()}>
+              <a
+                href={c.href}
+                {...(external ? { target: "_blank", rel: "noopener noreferrer" } : {})}
+                className={rowClass()}
+              >
                 <span className="text-accent">
                   <ContactGlyph name={c.icon} />
                 </span>
@@ -129,7 +141,16 @@ export default function Sidebar({ categories, total }: { categories: Category[];
           aria-label="메뉴 열기"
           className="icon-btn -mr-2 text-accent"
         >
-          <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" aria-hidden="true">
+          <svg
+            viewBox="0 0 24 24"
+            width="20"
+            height="20"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="2"
+            strokeLinecap="round"
+            aria-hidden="true"
+          >
             <path d="M4 7h16M4 12h16M4 17h16" />
           </svg>
         </button>
@@ -155,7 +176,16 @@ export default function Sidebar({ categories, total }: { categories: Category[];
           aria-label="메뉴 닫기"
           className="icon-btn absolute top-2 right-10 lg:hidden"
         >
-          <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" aria-hidden="true">
+          <svg
+            viewBox="0 0 24 24"
+            width="18"
+            height="18"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="2"
+            strokeLinecap="round"
+            aria-hidden="true"
+          >
             <path d="M6 6l12 12M18 6 6 18" />
           </svg>
         </button>
@@ -167,7 +197,9 @@ export default function Sidebar({ categories, total }: { categories: Category[];
         <Contacts />
 
         <div className="mt-auto flex items-center justify-between pt-8 pl-3">
-          <span className="text-[16px] text-muted">© {new Date().getFullYear()} {site.author.name}</span>
+          <span className="text-[16px] text-muted">
+            © {new Date().getFullYear()} {site.author.name}
+          </span>
           <ThemeToggle />
         </div>
       </aside>
