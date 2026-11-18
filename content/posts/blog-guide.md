@@ -9,7 +9,6 @@ tags: [markdown]
 # 블로그 글 작성 가이드
 
 이 블로그에서 글을 쓰는 방법과, 마크다운이 화면에 어떻게 보이는지 정리한 문서입니다.
-(이 파일은 `content/posts/` 밖에 있어서 블로그에는 올라가지 않습니다.)
 
 ---
 
@@ -280,13 +279,3 @@ public class OrderService {
 ```
 
 ---
-
-## 12. 올리기 전 체크리스트
-
-- [ ] front matter에 `title`, `date`, `category`가 있다
-- [ ] 본문 소제목은 `##`부터 시작한다
-- [ ] 문단 사이에 빈 줄이 있다 (`<br>` 없음)
-- [ ] 코드 블록 언어가 맞다
-- [ ] 이미지가 `public/images/`에 있고 `/images/...`로 적었다
-- [ ] `npm run dev`로 미리 봤다
-- [ ] 아직 쓰는 중이면 `draft: true`

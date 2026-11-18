@@ -380,7 +380,8 @@ figure:hover .copy-btn, .copy-btn:focus-visible { opacity: 1; }
 /* =====================================================================
    본문 이미지 — 노트에 붙인 사진
    ===================================================================== */
-.prose img { display: block; max-width: 100%; height: auto; margin: 0 auto 32px; border-radius: 12px; border: 1px solid var(--line); }
+/* 테두리 없음: 배경이 투명한 PNG(다이어그램 등)에 테두리가 보이지 않게 */
+.prose img { display: block; max-width: 100%; height: auto; margin: 0 auto 32px; border-radius: 12px; border: 0; }
 .prose .post-figure { margin: 0 0 32px; }
 .prose .post-figure img { margin: 0 auto; }
 .prose .post-figure figcaption { margin-top: 8px; text-align: center; font-size: 14px; line-height: 22px; color: var(--muted); }
