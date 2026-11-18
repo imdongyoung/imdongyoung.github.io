@@ -15,8 +15,8 @@ export default function RailLayout({ rail, label, children }: { rail?: React.Rea
 
 export function RailCard({ title, children }: { title: string; children: React.ReactNode }) {
   return (
-    <section className="card px-4 pt-4 pb-3">
-      <h2 className="mb-1 px-2 text-[16px] leading-6 text-muted">{title}</h2>
+    <section aria-label={title} className="card px-4 pt-4 pb-3">
+      <p className="mb-1 px-2 text-[16px] leading-6 text-muted">{title}</p>
       {children}
     </section>
   );

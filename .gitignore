@@ -9,3 +9,7 @@ skills
 app/fonts/mingijuk/Mingijuk.woff2
 app/fonts/mingijuk/Mingijuk-rest.woff2
 app/fonts/mingijuk/rest.css
+
+# design-taste-frontend 스킬 검사 결과·크롬 프로필
+.taste-skill/
+shots/

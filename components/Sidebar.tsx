@@ -130,7 +130,7 @@ export default function Sidebar({ categories, total }: { categories: Category[];
     <>
       {/* 모바일 상단 바 */}
       <div className="sticky top-0 z-40 flex items-center justify-between border-b border-line bg-paper/90 px-4 py-1.5 backdrop-blur-xl lg:hidden">
-        <Link href="/" className="font-hand text-[24px] leading-8 text-ink no-underline">
+        <Link href="/" className="font-hand flex min-h-11 items-center text-[24px] leading-8 text-ink no-underline">
           {site.title}
         </Link>
         <button
@@ -166,8 +166,8 @@ export default function Sidebar({ categories, total }: { categories: Category[];
 
       <aside
         id="sidebar"
-        className={`font-hand fixed inset-y-0 left-0 z-60 flex w-[min(300px,86vw)] flex-col overflow-y-auto overscroll-contain punched border-r border-line bg-paper pt-10 pr-10 pb-5 pl-3 transition-transform duration-300 ease-(--ease-ui) motion-reduce:transition-none lg:z-30 lg:w-[296px] lg:translate-x-0 lg:shadow-none ${
-          open ? "translate-x-0 shadow-[0_0_48px_rgb(0_0_0/.2)]" : "-translate-x-[105%]"
+        className={`font-hand fixed inset-y-0 left-0 z-60 flex w-[min(300px,86vw)] flex-col overflow-y-auto overscroll-contain punched border-r border-line bg-paper pt-10 pr-10 pb-5 pl-3 transition-[translate,visibility] duration-300 ease-(--ease-ui) motion-reduce:transition-none lg:visible lg:z-30 lg:w-[296px] lg:translate-x-0 lg:shadow-none ${
+          open ? "visible translate-x-0 shadow-[0_0_48px_rgb(0_0_0/.2)]" : "invisible -translate-x-[105%]"
         }`}
       >
         <button

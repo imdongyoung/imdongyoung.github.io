@@ -4,8 +4,9 @@ import { notFound } from "next/navigation";
 import CodeCopy from "@/components/CodeCopy";
 import RailLayout from "@/components/RailLayout";
 import Toc from "@/components/Toc";
+import { site } from "@/lib/site";
 import { formatDate } from "@/components/PostList";
-import { getAdjacent, getAllPosts, getPost, orPlaceholder } from "@/lib/posts";
+import { getAdjacent, getAllPosts, getPost, orPlaceholder, toCategorySlug } from "@/lib/posts";
 
 type Props = { params: Promise<{ slug: string }> };
 
@@ -18,7 +19,23 @@ export function generateStaticParams() {
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const post = await getPost((await params).slug);
   if (!post) return { title: "글을 찾을 수 없습니다" };
-  return { title: post.title, description: post.description };
+  // 공유 미리보기: 글의 첫 이미지(없으면 프로필 사진)
+  const image = post.thumbnail ?? site.author.avatar;
+  return {
+    title: post.title,
+    description: post.description,
+    alternates: { canonical: `/posts/${post.slug}/` },
+    openGraph: {
+      type: "article",
+      title: post.title,
+      description: post.description,
+      publishedTime: post.date,
+      tags: post.tags,
+      url: `/posts/${post.slug}/`,
+      images: [{ url: image, alt: post.title }],
+    },
+    twitter: { card: post.thumbnail ? "summary_large_image" : "summary", title: post.title, description: post.description, images: [image] },
+  };
 }
 
 export default async function PostPage({ params }: Props) {
@@ -34,7 +51,7 @@ export default async function PostPage({ params }: Props) {
       {/* 글 머리: 메타 → 큰 제목 → 설명 → 태그, 아래 구분선 */}
       <header className="mb-8">
         <div className="flex flex-wrap items-center gap-x-2 gap-y-2 text-footnote text-muted tabular-nums">
-          <Link href={`/categories/${post.categorySlug}`} className="rounded-full bg-accent/10 px-2.5 py-0.5 font-semibold text-accent no-underline transition-colors duration-150 hover:bg-accent/20">
+          <Link href={`/categories/${post.categorySlug}`} className="tap-44 rounded-full bg-accent/10 px-2.5 py-0.5 font-semibold text-accent no-underline transition-colors duration-150 hover:bg-accent/20">
             {post.category}
           </Link>
           <time dateTime={post.date}>{formatDate(post.date)}</time>
@@ -42,9 +59,15 @@ export default async function PostPage({ params }: Props) {
         <h1 className="mt-3 text-title1 sm:text-large">{post.title}</h1>
         {post.description && <p className="mt-2 max-w-[40em] text-body text-ink-2">{post.description}</p>}
         {post.tags.length > 0 && (
-          <div className="mt-3 flex flex-wrap gap-3 text-footnote text-muted">
+          <div className="mt-1 -ml-2 flex flex-wrap gap-x-1 text-footnote">
             {post.tags.map((t) => (
-              <span key={t}>#{t}</span>
+              <Link
+                key={t}
+                href={`/tags/${toCategorySlug(t)}`}
+                className="inline-flex min-h-11 items-center rounded-full px-2 text-muted no-underline transition-colors duration-150 hover:bg-paper-2 hover:text-accent"
+              >
+                #{t}
+              </Link>
             ))}
           </div>
         )}

@@ -416,3 +416,32 @@ figure:hover .copy-btn, .copy-btn:focus-visible { opacity: 1; }
 
   .prose img, .prose .post-figure { margin-bottom: 26px; }
 }
+
+/* =====================================================================
+   접근성 보강 (design-taste-frontend 스킬 검사 결과 반영)
+   ===================================================================== */
+/* 본문으로 건너뛰기: 평소엔 화면 밖, Tab으로 포커스되면 왼쪽 위에 나타남 */
+.skip-link {
+  position: fixed; left: 12px; top: 12px; z-index: 100;
+  padding: 10px 16px; border-radius: 999px;
+  background: var(--accent); color: var(--on-accent); font-size: 15px; text-decoration: none;
+  transform: translateY(-200%);
+}
+.skip-link:focus-visible { transform: none; outline-offset: 3px; }
+
+/* 코드 주석 색: one-dark-pro 기본(#7F848E)은 배경 대비 4.19:1이라 4.5:1 이상으로 올림 */
+.prose pre span[style*="#7F848E" i] { color: #959cab !important; }
+/* 코드 블록 자체에도 배경을 줘서, 옆으로 밀어 보는 영역까지 같은 배경 */
+.prose figure[data-rehype-pretty-code-figure] pre { background: var(--code-bg); }
+
+/* 포커스 링이 잘리지 않게: 코드 블록(가로 스크롤 영역)은 안쪽으로, 카드 링크는 둥근 모서리에 맞춰 */
+.prose figure[data-rehype-pretty-code-figure] pre:focus-visible { outline: 2px solid #7fb0f0; outline-offset: -2px; border-radius: 0; }
+.prose figure[data-rehype-pretty-code-figure]:has(.copy-btn:focus-visible) .copy-btn { opacity: 1; }
+.copy-btn:focus-visible { outline: 2px solid #7fb0f0; outline-offset: 2px; opacity: 1; }
+a.card:focus-visible, .card a:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+a.card:focus-visible { border-radius: var(--radius-card); }
+
+/* 보이는 크기는 그대로 두고, 누르는 영역만 높이 44px로 넓힘 (작은 칩·버튼용) */
+.tap-44 { position: relative; }
+.tap-44::before { content: ""; position: absolute; left: 0; right: 0; top: 50%; height: 44px; transform: translateY(-50%); }
+@media (max-width: 639px) { .copy-btn { min-height: 44px; line-height: 44px; top: 0; right: 4px; } }

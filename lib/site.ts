@@ -3,6 +3,8 @@ import type { IconName } from "@/components/Icons";
 // 블로그 전체 설정: 여기 값만 바꾸면 사이드바 프로필·연락처가 바뀝니다.
 // 연락처 icon에는 github · mail · linkedin · people 중 하나를 씁니다.
 export const site = {
+  // 배포 주소. 공유 미리보기(og:image 등)의 절대 주소를 만들 때 씁니다.
+  url: "https://imdongyoung.github.io",
   title: "Dev Notes",
   description: "기록을 습관처럼 하자",
   author: {
