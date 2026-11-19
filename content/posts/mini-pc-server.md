@@ -155,4 +155,6 @@ Host homeserver
 
 ![ssh](https://www.dropbox.com/scl/fi/gbkveu3hhzzfyg1cgqdjk/mini-pc2.png?rlkey=0y3544riozmti54sg3hte42rz&st=ads8f9nm&dl=1)
 
-나만의 24시간 가동되는 서버 세팅 완료~
+하지만 아 방법은 미니 PC의 사설 IP로 접속하는 방법이기에 외부 학교나 카페 인터넷에서는 접속하지 못한다.
+
+다음 글은 외부에서도 접속할 수 있는 방법을 포스트해야겠다.
