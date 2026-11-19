@@ -30,12 +30,11 @@ PC는 백엔드 서버 3~4개는 동시에 가동할 수 있을 사양의 PC를 
 
 # 서버 만들기
 
-
 ### 1. 설치 USB
 
 먼저 사용하지 않는 USB에 Ubuntu Server 설치 파일을 받았다.
 
-Ubuntu Desktop은 GUI가 있어 24시간 가동 시 GUI 충돌 가능성이 존재하고 메모리를 추가로 사용하기에 가벼운 Ubuntu Server로 설치했다.
+Ubuntu Desktop은 GUI를 위한 프로그램이 함께 돌아가 메모리와 CPU를 더 사용하여, 화면이 따로 필요 없는 가벼운 Ubuntu Server로 설치했다.
 
 설치할때는 Rufus로 설치한 ISO 파일을 USB에 구워서 설치했다.
 
@@ -49,9 +48,9 @@ Ubuntu Desktop은 GUI가 있어 24시간 가동 시 GUI 충돌 가능성이 존�
 
 정전 후 전기가 돌아오면 다시 자동으로 켜질 수 있도록 Restore on AC Power Loss 기능을 Power On으로 설정했다.
 
-무선 LAN 만을 사용하기에 전력을 조금이라도 아끼기 위해 Wi-Fi와 블루투스 사용은 껏다.
+유선 LAN 만을 사용하기에 전력을 조금이라도 아끼기 위해 Wi-Fi와 블루투스 사용은 껐다.
 
-Ryzen 내장 그래픽은 RAM의 일부를 뗴어가 사용한다고 하기에 UMA Frame Buffer Size를 128MB로 설정하여 조금만 떼어가도록 설정했다.
+Ryzen 내장 그래픽은 RAM의 일부를 떼어가 사용한다고 하기에 UMA Frame Buffer Size를 128MB로 설정하여 조금만 떼어가도록 설정했다.
 
 <br>
 
@@ -63,7 +62,7 @@ OS 설치는 어려운게 없었다. USB를 꼽고 BIOS에서 USB로 부팅하�
 
 ### 4. 한국 시간으로 설정
 
-시스템을 한국 시간으로 해야 로그와 백업이 한국 시간으로 찍히기 떄문에 설정을 해준다.
+시스템을 한국 시간으로 해야 로그와 백업이 한국 시간으로 찍히기 때문에 설정을 해준다.
 
 ```bash
 sudo timedatectl set-timezone Asia/Seoul
@@ -84,7 +83,7 @@ sudo timedatectl set-timezone Asia/Seoul
 확인해보니 우리 집 네트워크는 **광케이블** -> **광모뎀** -> **공유기** -> **기기(PC, 휴대폰)**로 구성되어 있었다.
 
 - 광모뎀은 KT 인터넷 망과 집을 이어주는 장비이다. 광모뎀에 직접 연결된 기기는 KT에서 공인 IP를 받는다.
-- 공유기는 공인 IP 하나를 광모뎀에게 받아서 연결된 기기들에게 사설 IP를 나눠준다. 외부에서는 공유기 뒤의 기기로 다이렉트로 접속할 수 없어 보호막 역할을 해준다.
+- 공유기는 공인 IP 하나를 광모뎀을 통해 KT에게 받아서 연결된 기기들에게 사설 IP를 나눠준다. 외부에서는 공유기 뒤의 기기로 다이렉트로 접속할 수 없어 보호막 역할을 해준다.
 
 나는 광모뎀에 PC를 연결해놓고 있었다. 그래서 공유기를 거치지 않았고 공유기 목록에도 나타나지 않았던 것이다.
 
@@ -94,29 +93,66 @@ sudo timedatectl set-timezone Asia/Seoul
 
 그리고 `ip a` 명령어로 확인해보니 IP 주소는 나오지 않았다..
 
-이유는 내 미니 PC에는 LAN 포트가 2개가 있다. 처음 광모뎀이 연결했을때 첫번째 포트에 연결해서 Ubuntu를 설치할때 첫번째 포트에서 IP를 받도록 설정이 되어있었다.
+이유는 내 미니 PC에는 LAN 포트가 2개가 있다. 처음 광모뎀에 연결했을때 첫번째 포트에 연결해서 Ubuntu를 설치할 때 첫번째 포트에서 IP를 받도록 설정이 되어있었다.
 
 ```yaml
 enp1s0:                # 첫번째 LAN 포트
   dhcp4: true          # IP를 받도록 설정됨
   match:
-    macaddress: 00:e0:4d:04:ea:69
+    macaddress: 00:e0:4d:xx:xx:xx
 enp2s0:                # 두번째 LAN 포트
   accept-ra: true      # IPv6 광고만 받음. dhcp4 없음
 ```
 
 근데 나는 모르고 두번째 포트에 연결을 했다.
 
-그래서 바로 다시 첫번째 포트로 바꿔 연결했다.
+그래서 두 포트 모두 IP를 받을 수 있도록 설정했다.
+
+```yaml
+enp1s0:                 # 첫번째 LAN 포트
+  dhcp4: true
+  optional: true        # 부팅 시 연결을 기다리지 않음
+enp2s0:                 # 첫번째 LAN 포트
+  dhcp4: true           # 두번째 LAN 포트도 IP를 받도록 설정
+  optional: true        # 부팅 시 연결을 기다리지 않음
+```
 
 이제 정상적으로 IP가 연결되어 KT 관리자 페이지에서 고정 IP를 설정해주었다!
 
 <br>
 
-### 6. 접속 시도
+### 6. SSH 접속
 
-ssh를 통해 접속해보니 잘된다.
+먼저 ssh로 접속을 시도해보았다.
+
+```bash
+ssh dongyoung@172.30.1.xx
+```
+
+비밀번호를 입력하니까 접속이 잘 된다.
+
+매번 비밀번호를 입력하는게 번거롭기 때문에, Mac에서 SSH 키를 만들고 공개키를 서버에 등록했다.
+
+```bash
+ssh-keygen -t ed25519 # SSH 키 생성
+
+ssh-copy-id -i ~/.ssh/id_ed25519.pub dongyoung@172.30.1.xx
+# 비밀번호 한 번 더 입력
+```
+
+이제 접속할떄 마다 비밀번호 입력 없이 접속이 된다.
+
+그 다음 ssh의 config로 프로필을 설정해서 간단한 명령어로 입력할 수 있도록 설정했다.
+
+```text title="~/.ssh/config"
+Host homeserver
+    HostName 172.30.1.xx
+    User dongyoung
+    IdentityFile ~/.ssh/id_ed25519
+```
+
+그러면 `ssh homeserver`라는 간단한 명령어로 미니 PC 서버에 접속이 가능해진다.
 
 ![ssh](https://www.dropbox.com/scl/fi/gbkveu3hhzzfyg1cgqdjk/mini-pc2.png?rlkey=0y3544riozmti54sg3hte42rz&st=ads8f9nm&dl=1)
 
-나만의 24시간 가동되는 서버 완성~
+나만의 24시간 가동되는 서버 세팅 완료~
