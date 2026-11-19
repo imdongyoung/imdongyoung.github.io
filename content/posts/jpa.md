@@ -1,10 +1,44 @@
 ---
-title: Spring - 영속성 컨텍스트
+title: Spring 데이터베이스
 date: 2026-11-17
 category: Spring
-description: 스프링의 영속성 컨텍스트가 무엇이고, EntityManager와 JpaRepository가 어떻게 이어지는지 정리했습니다.
+description: Spring과 데이터베이스가 소통하는 방법에 대해 공부해보았습니다.
 tags: [spring, jpa]
+draft: true
 ---
+
+## JPA ?
+
+JPA는 Java Persistence API로 자바에서 관계형 데이터베이스를 사용하는 방식을 정의한 인터페이스이다. 
+
+인터페이스 이므로 실제 사용을 위해 ORM 프레임워크를 추가로 사용해야한다. 
+
+ORM 프레임워크로 하이버네이트를 많이 사용한다.
+
+<br>
+
+## 하이버네이트(Hibernate)
+
+하이버네이트는 JPA 인터페이스를 구현한 구현제이다. 내부적으로 JDBC API를 사용한다.
+
+<br>
+
+## 엔티티(Entity)
+
+데이터베이스의 테이블과 매핑되는 객체이다. 본질적으로 자바 객체이지만 데이터베이스의 테이블과 직접 연결된다는 특징이 있다.
+
+<br>
+
+## 엔티티 매니저(Entitiy Manager)
+엔티티를 관리해 데이터베이스와 애플리케이션 사이에서 객체를 생성, 수정, 삭제하는 등의 역할을 한다.
+
+<br>
+
+## 스프링 데이터 JPA
+
+스프링 데이터의 공통적인 기능에서 JPA의 유용한 기술이 추가된 기술이다.
+
+<br>
 
 ## 영속성 컨텍스트란?
 
@@ -149,3 +183,9 @@ public class PersistenceContextTest {
 ## 1차 캐시, DB 접근 최소화
 
 <!-- 작성 중: 이 아래에 내용을 이어서 쓰세요. -->
+
+<br>
+
+## 참고
+- [골든래빗 \[스프링 부트 4 개발자 되기 + AI : 자바 편\]](https://goldenrabbit.co.kr/books/9791194383918)이 포스팅은 출판사의 지원없이 자비로 책을 구매하여 진행하였습니다.
+- [인프런 \[[Lv2] 현업 개발자의 JPA 완전 정복 - 영속성 컨텍스트부터 실무 패턴까지\]](https://inf.run/th84y)
