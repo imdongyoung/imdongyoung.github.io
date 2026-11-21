@@ -4,6 +4,7 @@ date: 2026-11-21
 category: Server
 description: 미니 PC 서버에 포트포워딩 없이 정적 페이지를 배포하는 방법에 대해 공부해보았습니다.
 tags: [server, pc]
+draft: true
 ---
 
 # 외부 인터넷에서 미니 PC로 접속되지 않은 이유
