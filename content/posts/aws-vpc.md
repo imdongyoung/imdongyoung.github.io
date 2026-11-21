@@ -8,7 +8,7 @@ tags: [aws, vpc]
 
 ![aws-vpc1](https://www.dropbox.com/scl/fi/v250dwtnglnhu7dj2jnvq/aws-vpc1.png?rlkey=uwysjuj5kdq6nqfdch8lql3vv&st=8brim560&dl=1)
 
-## VPC 란?
+# VPC 란?
 
 Virtual Private Cloud로 가상의 네트워크 공간(컴퓨터들끼리 통긴하는 공간)을 의미한다.
 
@@ -18,7 +18,7 @@ VPC를 활용하면 외부에서 직접 접근할 수 없는 독립적인 네트
 
 <br>
 
-## VPC 범위 지정
+# VPC 범위 지정
 
 VPC의 범위를 정할때는 IP 주소의 범위로 정하며, 각 리소스(EC2, RDS, ELB 등)들에 IP 주소를 할당한다.
 
@@ -28,13 +28,13 @@ VPC의 범위를 지정할떄 IP주소를 CIDR 표기 방식을 사용한다.
 
 <br>
 
-## CIDR 란?
+# CIDR 란?
 
 IP 주소의 범위를 나타내기 위한 표기 방법
 
 <br>
 
-> ### CIDR 해석
+> ## CIDR 해석
 > 1. 10진수 주소를 모두 2진수로 변환한다.
 > 2. CIDR 슬래시 뒤에 있는 숫자를 활용해 앞에서 자른다.
 > 3. 잘린 2진수의 왼쪽 값은 그대로 고정하고, 잘린 2진수의 오른쪽 값에서 표현 가능한 최댓값과 최솟값을 구한다.
@@ -42,7 +42,7 @@ IP 주소의 범위를 나타내기 위한 표기 방법
 
 <br>
 
-#### 예시 (13.25.82.0/24)
+## 예시 (13.25.82.0/24)
 
 1\. 10진수를 2진수로 변환한다.
 
@@ -66,25 +66,25 @@ IP 주소의 범위를 나타내기 위한 표기 방법
 
 <br>
 
-#### CIDR 계산해주는 사이트
+## CIDR 계산해주는 사이트
 
 [https://cidr.xyz/](https://cidr.xyz/)
 
 <br>
 
-## 공인 IP 란?
+# 공인 IP 란?
 
 공인 IP란 외부 인터넷을 통해 접근할 수 있는 고유한 IP 주소이다. 퍼블릭 IP라고도 한다.
 
 <br>
 
-## 사설 IP 란?
+# 사설 IP 란?
 
 사설 IP란 외부 인터넷과 직접 연결되지 않고, 내부 네트워크에서만 사용되는 주소이다. 프라이빗 IP라고도 한다.
 
 <br>
 
-### 사설 IP의 특징
+## 사설 IP의 특징
 
 -   사설 IP는 '동일한 네트워크 환경'에서만 서로 통신할 수 있다. 동일한 네트워크 환경이란 같은 공유기(와이파이)를 사용하거나 같은 VPC인 경우이다.
 -   사설 IP는 네트워크 환경마다 중복해서 가질 수 있다.  
@@ -92,7 +92,7 @@ IP 주소의 범위를 나타내기 위한 표기 방법
 
 <br>
 
-### 사설 IP 범위
+## 사설 IP 범위
 
 IETF라는 국제 인터넷 표준화 기구에서 사설 IP의 범위를 지정해놓음
 
@@ -108,13 +108,13 @@ AWS EC2 인스턴스를 생성하고 내 PC에서 EC2의 퍼블릭 IP로는 통�
 
 <br>
 
-## AWS 아키텍처
+# AWS 아키텍처
 
 ![aws-vpc2](https://www.dropbox.com/scl/fi/owzhxjaox3tp1z49lvr87/aws-vpc2.png?rlkey=n82pj8sx1a1tcxb4nnkrnb1af&st=wtvo1je2&dl=1)
 
 <br>
 
-## AWS VPC 생성
+# AWS VPC 생성
 
 ![aws-vpc3](https://www.dropbox.com/scl/fi/e5pfcrbpujwyu7yk187uo/aws-vpc3.png?rlkey=dhkye8h1b77pipulimonfv2wu&st=fibppihl&dl=1)
 

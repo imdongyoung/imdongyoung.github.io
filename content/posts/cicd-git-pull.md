@@ -8,13 +8,13 @@ tags: [ci/cd, github-actions]
 
 ![cicd-image](https://www.dropbox.com/scl/fi/u68orlikrhxf97yw02l2r/gitpull1.png?rlkey=w4hpq22qiqttejl6ouf34d8bp&st=74ryxq4m&dl=1)
 
-## 장점
+# 장점
 
 - git pull을 활용해서 변경된 부분의 프로젝트 코드에 대해서만 업데이트 하기 떄문에 CI/CD 속도가 빠르다.
   - 대부분의 CI/CD 방식들은 전체 프로젝트를 통쨰로 갈아끼우는 방식을 사용한다.
 - CI/CD 툴로 Github Actions만 사용하기 때문에 인프라 구조가 복잡하지 않고 간단하다.
 
-## 단점
+# 단점
 
 - 빌드 작업을 EC2에서 직접 진행하기 때문에 운영하고 있는 서버의 성능에 영향을 미칠 수 있다.
 - Github 계정 정보가 해당 EC2에 저장되기 때문에 개인 프로젝트 또는 믿을  만한 사람들과 같이 진행하는 토이 프로젝트에서만 사용하는 것이 좋다.
@@ -23,11 +23,11 @@ tags: [ci/cd, github-actions]
 
 <br>
 
-## 구축 과정
+# 구축 과정
 
-### 1\. NestJS 프로젝트 생성
+## 1\. NestJS 프로젝트 생성
 
-### 2\. .github/workflows/deploy.yml 파일 작성 후 Push
+## 2\. .github/workflows/deploy.yml 파일 작성 후 Push
 
 > **CI/CD 과정**
 >
@@ -105,4 +105,4 @@ jobs:
             pm2 start dist/main.js --name "backend-server"
 ```
 
-### 3\. 이후 프로젝트 Push하면 EC2 서버에 자동으로 배포됨
+## 3\. 이후 프로젝트 Push하면 EC2 서버에 자동으로 배포됨

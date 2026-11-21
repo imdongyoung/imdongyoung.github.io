@@ -6,7 +6,7 @@ description: CI/CD가 무엇이고 어떻게 동작하는지 공부해보았습�
 tags: [ci/cd]
 ---
 
-## CI/CD란?
+# CI/CD란?
 
 **CI/CD**(Continuous Intergration, Continuous Depolyment)는 **테스트(Test)**, **통합(Merge)**, **배포(Depoly)**의 과정을 **자동화**하는 걸 의미한다.
 
@@ -18,7 +18,7 @@ tags: [ci/cd]
 
 <br>
 
-## CI/CD 툴
+# CI/CD 툴
 
 - Github Actions
 - Jenkinx
@@ -28,7 +28,7 @@ tags: [ci/cd]
 
 <br>
 
-## Github Actions의 CI/CD 흐름
+# Github Actions의 CI/CD 흐름
 
 ![cicd2](https://www.dropbox.com/scl/fi/ztpbux1j7vknipon0rm56/cicd2.png?rlkey=2uuugdyzfez99ctgqmvug6n7l&st=bokyshrw&dl=1)
 

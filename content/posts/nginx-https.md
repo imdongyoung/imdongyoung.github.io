@@ -6,7 +6,7 @@ description: Certbot을 사용해 Nginx에 HTTPS를 적용하는 방법을 배�
 tags: [nginx, https]
 ---
 
-## Ubuntu에 Certbot 설치 명령어
+# Ubuntu에 Certbot 설치 명령어
 
 ```bash
 sudo snap install --classic certbot
@@ -15,7 +15,7 @@ sudo ln -s /snap/bin/certbot /usr/bin/certbot
 
 <br>
 
-## HTTPS 인증서 발급 받기
+# HTTPS 인증서 발급 받기
 
 ```bash
 sudo certbot --nginx -d <도메인 주소>
@@ -25,13 +25,13 @@ sudo certbot --nginx -d <도메인 주소>
 
 <br>
 
-### 인증서를 발급 받으면 HTTPS로 접속할 수 있음
+## 인증서를 발급 받으면 HTTPS로 접속할 수 있음
 
 ![nginx-https-image](https://www.dropbox.com/scl/fi/sxlrhcznsubyqhup15dzz/nginx-https1.png?rlkey=o5tfemdcxvue90d54u6gxtl5x&st=q9oghfvo&dl=1)
 
 <br>
 
-### Certbot이 작성한 Nginx 설정 파일 코드
+## Certbot이 작성한 Nginx 설정 파일 코드
 
 ```nginx title="nginx-dy.p-e.kr.conf"
 # HTTPS nginx-dy.p-e.kr 요청을 처리
@@ -108,7 +108,7 @@ include admin.nginx-dy.p-e.kr.conf;
 
 <br>
 
-## Certbot으로 발급 받은 인증서 확인 명령어
+# Certbot으로 발급 받은 인증서 확인 명령어
 
 ```bash
 sudo certbot certificates

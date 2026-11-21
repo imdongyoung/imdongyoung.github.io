@@ -6,7 +6,7 @@ description: AWS EBS에서 볼륨을 수정해도 EC2 서버에 반영되지 않
 tags: [aws, ebs]
 ---
 
-## 발생한 문제
+# 발생한 문제
 
 > t3.micro와 8GB의 볼륨을 사용하고 있는 EC2에 NestJS 프로젝트의 CI/CD 파이프라인 구축 작업을 하다 docker image, node package, nginx/certbot 파일, github-actions runners 파일 등 금방 용량이 다 차서 aws cli를 설치하지 못하고 있었다.
 
@@ -19,13 +19,13 @@ tags: [aws, ebs]
 
 <br>
 
-## EBS 볼륨 수정
+# EBS 볼륨 수정
 
 EC2 인스턴스 -> EBS -> 볼륨 선택 후 작업 -> 볼륨의 용량을 원하는 용량으로 설정
 
 <br>
 
-## 설정 후 다시 용량 확인
+# 설정 후 다시 용량 확인
 
 ![ebs3](https://www.dropbox.com/scl/fi/l1tas65dnxm2zmh286sqo/ebs-volume3.png?rlkey=u7ybaidgmzepda2xz6zumgwyg&st=yh1hyi4l&dl=1)
 
@@ -39,7 +39,7 @@ nvme0n1애 확장된 20GB의 볼륨이 확인된다.
 
 <br>
 
-## Ubuntu에 볼륨 적용
+# Ubuntu에 볼륨 적용
 
 growpart 설치
 

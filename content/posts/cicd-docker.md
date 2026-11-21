@@ -8,42 +8,42 @@ tags: [ci/cd, github-actions, docker]
 
 ![cicd-docker1](https://www.dropbox.com/scl/fi/diw92l5fjxeu1gotzi04t/cicd-docker1.png?rlkey=g7u6pt7q4k8hntfcpx0kyduhq&st=0mweafb4&dl=1)
 
-## AWS ECR ?
+# AWS ECR ?
 
 도커 이미지들을 저장하는 AWS 서비스
 
 <br>
 
-## 장점
+# 장점
 
 - Docker 기반으로 서비스를 운영할 떄, 가장 간단하게 구성할 수 있는 구조
 
-## 단점
+# 단점
 
 - 무중단 배포를 구현하거나 여러 EC2 인스턴스에 배포를 해야하는 상황이라면, 직접 Github Actions에 스크립틀르 작성해서 구현해야하므로 복잡하다.
 
 > **컨테이너 기반으로 인프라를 구성하거나 소규모 프로젝트 일 때 많이 활용한다.**
 
-## 구축 과정
+# 구축 과정
 
-#### 1. EC2 서버에 docker 설치
+## 1. EC2 서버에 docker 설치
 
-#### 2. AWS IAM 사용자에 AmazonEC2ContainerRegistryFullAccess 권한 추가
+## 2. AWS IAM 사용자에 AmazonEC2ContainerRegistryFullAccess 권한 추가
 
-#### 3. EC2에 생성한 IAM 권한 부여
+## 3. EC2에 생성한 IAM 권한 부여
 
-#### 4. AWS ECR 레포지토리 생성
+## 4. AWS ECR 레포지토리 생성
 
-#### 5. Dockerfile, .dockerignore 작성
+## 5. Dockerfile, .dockerignore 작성
 
-#### 6. Private ECR에 접근할 수 있도록 EC2에 amazon-ecr-credential-halper 설치
+## 6. Private ECR에 접근할 수 있도록 EC2에 amazon-ecr-credential-halper 설치
 
 ```bash
 sudo apt update
 sudo apt install amazon-ecr-credential-helper
 ```
 
-#### 7. workflow 파일 작성
+## 7. workflow 파일 작성
 
 > **수행 과정**
 >

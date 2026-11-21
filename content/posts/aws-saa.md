@@ -6,7 +6,7 @@ description: AWS Solutions Architect – Associate(SAA-C03) 취득 과정과 공
 tags: [aws, certification]
 ---
 
-## AWS Solutions Architect – Associate란?
+# AWS Solutions Architect – Associate란?
 
 AWS SAA 자격증은 개발자들이 많이 취득하는 AWS 자격증으로, 효율적이고 안정적인 솔루션을 설계하는 능력을 검증하는 자격증이다.
 
@@ -20,7 +20,7 @@ AWS SAA 자격증은 개발자들이 많이 취득하는 AWS 자격증으로, �
 
 <br>
 
-## 결과 및 시험 후기
+# 결과 및 시험 후기
 
 ![SAA-C03 합격 점수 812점](https://www.dropbox.com/scl/fi/7gf3lbal3pawx7hbqocbc/aws-saa1.png?rlkey=gkp5wu114w2937wl4503k8853&st=s4cbn8eq&dl=1)
 
@@ -32,7 +32,7 @@ AWS SAA 자격증은 개발자들이 많이 취득하는 AWS 자격증으로, �
 
 <br>
 
-## 기본 베이스
+# 기본 베이스
 
 2025년 8월에 AWS CLF-C02를 취득했었다. 그때 AWS의 기본적인 서비스들의 개념이나 EC2, RDS 등 대표적인 서비스에 대해서는 조금 자세히 알고 있었다.
 
@@ -42,7 +42,7 @@ AWS SAA 자격증은 개발자들이 많이 취득하는 AWS 자격증으로, �
 
 <br>
 
-## 준비 과정 및 공부 방법
+# 준비 과정 및 공부 방법
 
 총 기간은 3주 정도 걸렸다. 1주는 개념 정리를 했고, 나머지 2주는 계속 덤프를 풀었다.
 
@@ -56,7 +56,7 @@ AWS SAA 자격증은 개발자들이 많이 취득하는 AWS 자격증으로, �
 
 <br>
 
-## 후기 및 팁
+# 후기 및 팁
 
 시험은 강남 엔아버어학원 시험장에 가서 봤다. 시험장은 3~4평 정도의 사무실 같은 곳에서 봤다.
 
@@ -74,9 +74,9 @@ AWS SAA 자격증은 개발자들이 많이 취득하는 AWS 자격증으로, �
 
 <br>
 
-## 부록: 서비스별 핵심 정리
+# 부록: 서비스별 핵심 정리
 
-### 1. 컴퓨트
+## 1. 컴퓨트
 
 **실행 방식**
 
@@ -120,7 +120,7 @@ AWS SAA 자격증은 개발자들이 많이 취득하는 AWS 자격증으로, �
 - **Placement Group:** Cluster(HPC, 초저지연) / Spread(AZ당 7개, 장애 격리) / Partition(Hadoop·Kafka)
 - **EBS vs Instance Store:** 데이터를 유지해야 하면 EBS, 휘발돼도 되는 캐시는 Instance Store
 
-### 2. 스토리지
+## 2. 스토리지
 
 **S3 스토리지 클래스**
 
@@ -167,7 +167,7 @@ AWS SAA 자격증은 개발자들이 많이 취득하는 AWS 자격증으로, �
 | HPC·ML 병렬 처리, S3 연동 | FSx for Lustre |
 | 스냅샷 복원 직후 바로 풀 I/O | EBS Fast Snapshot Restore |
 
-### 3. 데이터베이스
+## 3. 데이터베이스
 
 **선택 기준**
 
@@ -206,7 +206,7 @@ AWS SAA 자격증은 개발자들이 많이 취득하는 AWS 자격증으로, �
 | OLAP·데이터 웨어하우스 | Redshift |
 | OS 접근이 필요한 Oracle·SQL Server | RDS Custom |
 
-### 4. 메시징·스트리밍
+## 4. 메시징·스트리밍
 
 - **SQS:** 버퍼, 1:1, 소비하면 삭제. 부하를 흡수하고 처리를 안정화
     - FIFO는 순서 보장과 중복 제거 (MessageGroupId 단위)
@@ -223,7 +223,7 @@ AWS SAA 자격증은 개발자들이 많이 취득하는 AWS 자격증으로, �
     - **Firehose:** S3·Redshift·OpenSearch로 자동 적재. 처리 로직 없이 쌓기만 할 때
     - **Managed Service for Apache Flink** (기존 Kinesis Data Analytics): 실시간 집계·이상 탐지
 
-### 5. 네트워크
+## 5. 네트워크
 
 **VPC 기본**
 
@@ -295,7 +295,7 @@ AWS SAA 자격증은 개발자들이 많이 취득하는 AWS 자격증으로, �
 - 여러 지사를 VPN으로 연결 → CloudHub
 - 재택근무 개인 PC → Client VPN
 
-### 6. 보안·권한·감사
+## 6. 보안·권한·감사
 
 **IAM**
 
@@ -357,7 +357,7 @@ AWS SAA 자격증은 개발자들이 많이 취득하는 AWS 자격증으로, �
 | 보안 결과 통합 | Security Hub |
 | 컴플라이언스 보고서 | Artifact |
 
-### 7. 마이그레이션·데이터 전송
+## 7. 마이그레이션·데이터 전송
 
 | 신호 | 정답 |
 | --- | --- |
@@ -378,7 +378,7 @@ AWS SAA 자격증은 개발자들이 많이 취득하는 AWS 자격증으로, �
 - **Snowmobile:** 데이터센터 단위 (10PB 이상). 2024년 서비스 종료
 - **Snowcone:** 소형, 수 TB. 2024년 판매 종료
 
-### 8. 비용 모델
+## 8. 비용 모델
 
 | 축 | 서버를 유지하는 모델 | 요청 기반 모델 |
 | --- | --- | --- |
@@ -398,7 +398,7 @@ AWS SAA 자격증은 개발자들이 많이 취득하는 AWS 자격증으로, �
 - Trusted Advisor: 비용·성능·보안 점검
 - Gateway Endpoint로 NAT 비용 절감
 
-### 9. 분석
+## 9. 분석
 
 | 신호 | 정답 |
 | --- | --- |

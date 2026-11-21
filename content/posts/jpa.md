@@ -7,7 +7,7 @@ tags: [spring, jpa]
 draft: true
 ---
 
-## JPA ?
+# JPA ?
 
 JPA는 Java Persistence API로 자바에서 관계형 데이터베이스를 사용하는 방식을 정의한 인터페이스이다. 
 
@@ -17,30 +17,30 @@ ORM 프레임워크로 하이버네이트를 많이 사용한다.
 
 <br>
 
-## 하이버네이트(Hibernate)
+# 하이버네이트(Hibernate)
 
 하이버네이트는 JPA 인터페이스를 구현한 구현제이다. 내부적으로 JDBC API를 사용한다.
 
 <br>
 
-## 엔티티(Entity)
+# 엔티티(Entity)
 
 데이터베이스의 테이블과 매핑되는 객체이다. 본질적으로 자바 객체이지만 데이터베이스의 테이블과 직접 연결된다는 특징이 있다.
 
 <br>
 
-## 엔티티 매니저(Entitiy Manager)
+# 엔티티 매니저(Entitiy Manager)
 엔티티를 관리해 데이터베이스와 애플리케이션 사이에서 객체를 생성, 수정, 삭제하는 등의 역할을 한다.
 
 <br>
 
-## 스프링 데이터 JPA
+# 스프링 데이터 JPA
 
 스프링 데이터의 공통적인 기능에서 JPA의 유용한 기술이 추가된 기술이다.
 
 <br>
 
-## 영속성 컨텍스트란?
+# 영속성 컨텍스트란?
 
 영속성 컨텍스트(Persistence Context)는 엔티티를 논리하는 논리적 공간이다. 저장은 DB가 하고, 영속성 컨텍스트는 EntityManager가 살아 있는 동안(보통 트랜잭션 하나) 엔티티의 상태를 추적한다.
 
@@ -48,7 +48,7 @@ ORM 프레임워크로 하이버네이트를 많이 사용한다.
 
 <br>
 
-## JDBC와 영속성 컨텍스트의 차이점
+# JDBC와 영속성 컨텍스트의 차이점
 
 | JDBC의 고통 😱                  | 영속성 컨텍스트의 해결책 🦸      | 비서의 행동                              |
 | ------------------------------- | -------------------------------- | ---------------------------------------- |
@@ -60,7 +60,7 @@ ORM 프레임워크로 하이버네이트를 많이 사용한다.
 
 <br>
 
-## 영속성 컨텍스트의 동작 과정
+# 영속성 컨텍스트의 동작 과정
 
 ```java title="PersistenceContextTest.java" {44-46}
 package org.example.hellojpa;
@@ -136,25 +136,25 @@ public class PersistenceContextTest {
 
 <br>
 
-## JPA 구성 요소
+# JPA 구성 요소
 
 > `JpaRepository`의 `save()`, `findById()` 같은 편리한 메서드들이 내부적으로 어떻게 동작하는지 이해하려면, `JpaRepository`라는 껍데기 안에서 실제 일을 수행하는 핵심 객체인 `EntityManager`를 반드시 알아야 한다.
 
 <br>
 
-### JPA (Java Persistence API)
+## JPA (Java Persistence API)
 
 자바 객체와 DB 테이블을 어떻게 매핑하고 어떻게 다룰 것인가에 대한 규칙과 인터페이스의 집합
 
 <br>
 
-### EntityManager
+## EntityManager
 
 영속성 컨텍스트에 접근하고, 엔티티의 생명주기(저장, 조회, 수정, 삭제)를 관리하는 실질적인 관리자
 
 <br>
 
-### Persistence Context (영속성 컨텍스트)
+## Persistence Context (영속성 컨텍스트)
 
 `EntityManager`를 통해 생성되고 관리되는 1차 캐시(메모리 공간)
 
@@ -162,7 +162,7 @@ public class PersistenceContextTest {
 
 <br>
 
-### JpaRepository
+## JpaRepository
 
 우리가 자주 쓰는 CRUD 기능(`save`, `findAll` 등)을 미리 만들어둔 인터페이스
 
@@ -180,12 +180,12 @@ public class PersistenceContextTest {
 
 <br>
 
-## 1차 캐시, DB 접근 최소화
+# 1차 캐시, DB 접근 최소화
 
 <!-- 작성 중: 이 아래에 내용을 이어서 쓰세요. -->
 
 <br>
 
-## 참고
+# 참고
 - [골든래빗 \[스프링 부트 4 개발자 되기 + AI : 자바 편\]](https://goldenrabbit.co.kr/books/9791194383918)이 포스팅은 출판사의 지원없이 자비로 책을 구매하여 진행하였습니다.
 - [인프런 \[[Lv2] 현업 개발자의 JPA 완전 정복 - 영속성 컨텍스트부터 실무 패턴까지\]](https://inf.run/th84y)

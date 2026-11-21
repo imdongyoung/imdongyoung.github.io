@@ -6,11 +6,11 @@ description: GitHub Actions의 기본 사용법 및 문법에 대해 공부해�
 tags: [ci/cd, github-actions]
 ---
 
-## 1\. 프로젝트에 .github/workflows 폴더 생성
+# 1\. 프로젝트에 .github/workflows 폴더 생성
 
 <br>
 
-## 2\. 배포 파일 생성
+# 2\. 배포 파일 생성
 
 ```yml title=".github/workflows/depoly.yml"
 # Workflow : 하나의 yml파일
@@ -58,10 +58,10 @@ jobs:
 
 <br>
 
-## 3\. 작업 후 코드 Commit & Push
+# 3\. 작업 후 코드 Commit & Push
 
 <br>
 
-## 4\. Github 레포지토리에 생성된 Actions 확인
+# 4\. Github 레포지토리에 생성된 Actions 확인
 
 ![cicd-image](https://www.dropbox.com/scl/fi/ouwi9gpx9kxb8n4xzsku7/cicd-syntax.png?rlkey=m41n6cd9h4g11t0mhtqdsrla4&st=rmnf7x95&dl=1)

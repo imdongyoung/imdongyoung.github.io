@@ -8,16 +8,16 @@ tags: [ci/cd, github-actions]
 
 ![cicd-scp1](https://www.dropbox.com/scl/fi/puucvezcq6gdmco2brtxi/cicd-scp1.png?rlkey=k5ubomolwu1oyyq0mphhhick0&st=xm1ufw32&dl=1)
 
-## SCP ?
+# SCP ?
 
 SCP는 EC2로 빌드된 파일을 전송해주는 기능
 
-## 장점
+# 장점
 
 - 빌드 작업을 Github Actions에서 하기 때문에 운영하고 있는 서버의 성능에 영향을 거의 주지 않는다.
 - CI/CD 툴로 Github Actions만 사용하기 때문에 인프라 구조가 복잡하지 않고 간단하다.
 
-## 단점
+# 단점
 
 - 무중단 배포를 구현하거나 여러 EC2 인스턴스에 배포해야 하는 상황이라면, 직접 Github Actions에 스크립트를 작성해서 구현해야한다. 이 방식은 상당히 복잡하다.
 
@@ -25,11 +25,11 @@ SCP는 EC2로 빌드된 파일을 전송해주는 기능
 
 <br>
 
-## 구축 과정
+# 구축 과정
 
-### 1\. NestJS 프로젝트 생성
+## 1\. NestJS 프로젝트 생성
 
-### 2\. .github/workflows/deploy.yml 파일 작성 후 Push
+## 2\. .github/workflows/deploy.yml 파일 작성 후 Push
 
 > 1.  Github Actions 서버에서 테스트를 진행하는건 git pull 과정과 동일
 > 2.  테스트 성공 시 Github Actions 서버에서 프로젝트 빌드

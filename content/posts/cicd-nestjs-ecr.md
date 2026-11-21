@@ -14,13 +14,13 @@ tags: [ci/cd, ecr]
 
 <br>
 
-### ECR 설정
+## ECR 설정
 
 [ECR 설정 방법](https://imdongyoung.github.io/posts/cicd-docker/#%EA%B5%AC%EC%B6%95-%EA%B3%BC%EC%A0%95)
 
 <br>
 
-### workflow 파일
+## workflow 파일
 
 1.  Github Actions ubuntu 서버에 프로젝트를 가져옴
 2.  node, pnpm, 의존성을 설치 후 테스트 실행
@@ -159,7 +159,7 @@ jobs:
 
 <br>
 
-### docker-compose.yml 파일 수정
+## docker-compose.yml 파일 수정
 
 EC2에 배포할때 IMAGE_NAME과 IMAGE_TAG를 환경 변수로 만들어주고 있기에 백엔드의 image 이름을 이미지처럼 수정
 
@@ -167,13 +167,13 @@ EC2에 배포할때 IMAGE_NAME과 IMAGE_TAG를 환경 변수로 만들어주고 
 
 <br>
 
-### Github Secrets 등록
+## Github Secrets 등록
 
 ![cicd3](https://www.dropbox.com/scl/fi/em58ibhowjniiqo7n9zdt/cicd-ecr3.png?rlkey=6yixyp6oq0lzpkxenw8on8gue&st=0ejxwx34&dl=1)
 
 <br>
 
-### Github runner 등록
+## Github runner 등록
 
 GitHub Repository -> Setttings -> Actions -> Runners 
 
@@ -189,7 +189,7 @@ Status가 Online 혹은 Idle이여야하고 workflow에 서버를 runs-on: \[sel
 
 <br>
 
-### AWS CLI 설치
+## AWS CLI 설치
 
 ```bash
 sudo apt update
@@ -204,7 +204,7 @@ aws --version
 
 <br>
 
-### EC2 docker 권한 부여
+## EC2 docker 권한 부여
 
 기본 권한으로는 EC2에서 up이나 build를 하려면 sudo를 필수로 붙여줘야한다,
 

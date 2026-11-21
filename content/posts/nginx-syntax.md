@@ -6,13 +6,13 @@ description: Nginx의 기본 문법과 명령어
 tags: [nginx]
 ---
 
-## nginx.conf
+# nginx.conf
 
 Nginx의 기본적인 설정 파일
 
 <br>
 
-## Nginx 문법
+# Nginx 문법
 
 ```nginx title="nginx.conf"
 # server : 하나의 웹 사이트에 관련된 설정을 관리하는 단위 (server 블럭 이라고 부름)
@@ -46,7 +46,7 @@ server {
 
 <br>
 
-## Nginx 명령어
+# Nginx 명령어
 
 ```bash
 # nginx 문법 확인 명령어
@@ -58,7 +58,7 @@ sudo nginx -s reload
 
 <br>
 
-## Nginx 에러 디버깅 방법
+# Nginx 에러 디버깅 방법
 
 ```bash
 # 1번째, Nginx 실행 상태 확인
