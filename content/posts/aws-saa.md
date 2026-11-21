@@ -2,7 +2,7 @@
 title: AWS SAA-C03 취득 후기
 date: 2026-10-08
 category: AWS
-description: AWS Solutions Architect – Associate(SAA-C03) 취득 과정과 공부 방법, 그리고 공부하며 정리한 서비스별 핵심 내용입니다.
+description: AWS Solutions Architect – Associate(SAA-C03) 취득한 후기에 대해 작성해보았습니다.
 tags: [aws, certification]
 ---
 

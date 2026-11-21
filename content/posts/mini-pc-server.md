@@ -2,7 +2,7 @@
 title: 중고 미니 PC를 구매하여 서버 만들기
 date: 2026-11-19
 category: Server
-description: 중고 미니 PC를 구매하여 서버를 만들어 AWS 비용을 막아보자
+description: 중고 미니 PC를 구매하여 서버를 만들어 AWS 비용을 막아보도록 해보겠습니다.
 tags: [server, pc]
 ---
 
