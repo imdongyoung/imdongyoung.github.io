@@ -23,6 +23,14 @@ export const site = {
       icon: "people",
     },
   ] satisfies { label: string; href: string; icon: IconName }[],
+  // 댓글(giscus, GitHub Discussions 기반). 값은 https://giscus.app/ko 에서 확인합니다.
+  // categoryId가 비어 있으면 댓글 창을 표시하지 않습니다.
+  giscus: {
+    repo: "imdongyoung/imdongyoung.github.io",
+    repoId: "R_kgDOVxL7Gg",
+    category: "Announcements",
+    categoryId: "DIC_kwDOVxL7Gs4DLsiv",
+  },
 };
 
 export type ContactIcon = IconName;

@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import CodeCopy from "@/components/CodeCopy";
+import Comments from "@/components/Comments";
 import RailLayout from "@/components/RailLayout";
 import Toc from "@/components/Toc";
 import { site } from "@/lib/site";
@@ -93,6 +94,8 @@ export default async function PostPage({ params }: Props) {
           </Link>
         )}
       </nav>
+
+      <Comments />
     </article>
     </RailLayout>
   );
