@@ -4,7 +4,6 @@ date: 2026-11-21
 category: Server
 description: 미니 PC 서버에 포트포워딩 없이 정적 페이지를 배포하는 방법에 대해 공부해보았습니다.
 tags: [server, pc]
-# draft: true
 ---
 
 # 외부 인터넷에서 미니 PC로 접속되지 않은 이유
@@ -22,7 +21,10 @@ KT 공유기는 공인 IP 하나이고, 공유기에 연결된 기기들은 모�
 
 <br> 
 
-# Cloudflare Tunnel
+# Cloudflare Tunnel ?
+
+![cloudfalre](https://www.dropbox.com/scl/fi/c3f1sjbzve6cswvp7avj9/cloudflare.svg?rlkey=xtgjyusd1l8uj4usq798hfini&st=zpqbcscw&dl=1)
+
 Couldflare Tunnel은 포트포워딩과 반대로 미니 PC에서 먼저 Cloudflare로 나가는 연결을 맺어두고, 외부의 요청이 이 연결을 타고 들어오는 구조로, 공유기는 내부의 기기가 외부로 접속한 것이라고 인지한다.
 
 <br>
